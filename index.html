@@ -652,9 +652,9 @@
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
       letter-spacing: 0.15em;
-      color: rgba(212, 175, 106, .15);
+      color: rgba(240, 208, 128, .65);
     }
-    footer a { color: rgba(212, 175, 106, .28); text-decoration: none; }
+    footer a { color: rgba(240, 208, 128, .70); text-decoration: none; }
 
     /* ── RESPONSIVE ───────────────────────────────────── */
     @media (max-width: 480px) {
@@ -715,8 +715,7 @@
           <div class="promotor-code" id="dash-codigo">—</div>
         </div>
         <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;">
-          <span id="dash-estado" class="estado-badge sin-enviar">Sin enviar</span>
-          <button class="btn-logout" onclick="handleLogout()">Cerrar sesión</button>
+          <button class="btn-logout" id="btn-logout" onclick="handleLogout()">Cerrar sesión</button>
         </div>
       </div>
 
@@ -817,7 +816,7 @@
   <!-- PDF Guide -->
   <div class="pdf-section" id="pdf-section">
     <p class="pdf-label" id="lbl-pdf">Guía del Promotor</p>
-    <p class="pdf-desc" id="lbl-pdf-desc">Este manual recoge todos los insights clave del evento para que puedas vender más y mejor. Úsalo antes de hablar con tus contactos — cuanto más lo conozcas, más entradas venderás.</p>
+    <p class="pdf-desc" id="lbl-pdf-desc">🎯 Tu herramienta secreta para vender más. Este manual tiene todo lo que necesitas saber sobre el evento — artistas, experiencia, propuesta de valor — para que cada conversación con un contacto se convierta en una venta. 🔥 Léelo, interiorízalo y úsalo. Los promotores que lo conocen venden más.</p>
     <iframe id="pdf-frame" class="pdf-frame"
       src="https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview"
       allow="autoplay" loading="lazy"></iframe>
@@ -917,15 +916,6 @@
       document.getElementById('dash-nombre').textContent = p.Promotor ?? '—';
       document.getElementById('dash-codigo').textContent = 'Código: ' + (p.Codigo ?? '—');
 
-      // Estado badge
-      const estadoEl = document.getElementById('dash-estado');
-      const estado = (p.Estado ?? 'Sin enviar').toLowerCase();
-      estadoEl.textContent = p.Estado ?? 'Sin enviar';
-      estadoEl.className = 'estado-badge';
-      if (estado.includes('pagado')) estadoEl.classList.add('pagado');
-      else if (estado.includes('pend')) estadoEl.classList.add('pendiente');
-      else estadoEl.classList.add('sin-enviar');
-
       // Canales
       setCanal('canal-online', p.Online_activado === 1 || p.Online_activado === true);
       setCanal('canal-offline', p.Offline_activado === 1 || p.Offline_activado === true);
@@ -1019,7 +1009,7 @@
         entradasUnit: 'entradas',
         tu: '· TÚ',
         pdfLabel: 'Guía del Promotor',
-        pdfDesc: 'Este manual recoge todos los insights clave del evento para que puedas vender más y mejor. Úsalo antes de hablar con tus contactos — cuanto más lo conozcas, más entradas venderás.',
+        pdfDesc: '🎯 Tu herramienta secreta para vender más. Este manual tiene todo lo que necesitas saber sobre el evento — artistas, experiencia, propuesta de valor — para que cada conversación con un contacto se convierta en una venta. 🔥 Léelo, interiorízalo y úsalo. Los promotores que lo conocen venden más.',
         pdfSrc: 'https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview',
       },
       en: {
@@ -1050,7 +1040,7 @@
         entradasUnit: 'tickets',
         tu: '· YOU',
         pdfLabel: 'Promoter Guide',
-        pdfDesc: 'This guide contains all the key insights about the event to help you sell more tickets. Read it before reaching out to your contacts — the more you know it, the more you\'ll sell.',
+        pdfDesc: '🎯 Your secret weapon for selling more. This guide covers everything you need to know about the event — artists, experience, value proposition — so every conversation turns into a sale. 🔥 Read it, internalize it, use it. Promoters who know it sell more.',
         pdfSrc: 'https://drive.google.com/file/d/1qHoqBlqKnIC2qBlrRcjqicaOV8NNkHeN/preview',
       }
     };
@@ -1067,6 +1057,7 @@
       document.getElementById('lbl-codigo').textContent = t.lblCodigo;
       document.getElementById('inp-email').placeholder = t.placeholderEmail;
       document.getElementById('btn-acceder').textContent = t.btnAcceder;
+      document.getElementById('btn-logout').textContent = t.cerrarSesion;
       document.getElementById('lbl-canales').textContent = t.canales;
       document.getElementById('lbl-resumen').textContent = t.resumen;
       document.getElementById('lbl-entradas-vendidas').textContent = t.entradasVendidas;
