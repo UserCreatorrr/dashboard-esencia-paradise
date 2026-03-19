@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Promotores — Esencia Paradise 2026</title>
+  <link rel="icon" href="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold:         #EAD8B1;
+      --gold-light:   #F3E5C5;
+      --bronze:       #C6A25F;
+      --bronze-dark:  #a8683f;
+      --crimson:      #7E1212;
+      --dark-0:       #050506;
+      --dark-1:       #0B0B0C;
+      --dark-2:       #111112;
+      --card-bg:      rgba(10, 10, 11, 0.90);
+      --border:       rgba(234, 216, 177, 0.18);
+      --border-focus: rgba(198, 162, 95, 0.65);
+      --text-muted:   rgba(234, 216, 177, 0.50);
+      --radius-card:  22px;
+      --radius-input: 12px;
+      --radius-btn:   999px;
+      --tr:           0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    html, body { height: 100%; }
+
+    body {
+      background-color: var(--dark-0);
+      color: var(--gold);
+      font-family: 'Montserrat', system-ui, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(198,162,95,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(126,18,18,.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ───────────────────────────────────────── */
+    header {
+      width: 100%;
+      padding: 1.5rem 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-wrap img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 22px rgba(198,162,95,.5));
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 600;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--bronze) 55%, var(--gold) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 5s linear infinite;
+      line-height: 1.2;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    /* ── MAIN ─────────────────────────────────────────── */
+    main {
+      width: 100%;
+      max-width: 560px;
+      padding: 0 1.25rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    #screen-login {
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 6rem;
+    }
+
+    main.wide { max-width: 860px; }
+
+    /* ── CARD ─────────────────────────────────────────── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: clamp(1.6rem, 5vw, 2.4rem);
+      box-shadow: 0 28px 70px rgba(0,0,0,.85), 0 0 0 1px rgba(234,216,177,.04) inset;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* ── SECTION LABEL ────────────────────────────────── */
+    .section-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 1.6rem 0; }
+
+    /* ── INPUTS ───────────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+    label {
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--tr);
+    }
+    .field:focus-within label { color: var(--bronze); }
+
+    input {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-input);
+      color: var(--gold);
+      font-family: inherit;
+      font-size: 0.92rem;
+      padding: 0.72rem 1rem;
+      outline: none;
+      transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+      -webkit-appearance: none;
+    }
+    input::placeholder { color: rgba(234,216,177,.22); }
+    input:focus {
+      border-color: var(--border-focus);
+      background: rgba(198,162,95,.05);
+      box-shadow: 0 0 0 3px rgba(198,162,95,.11);
+    }
+
+    /* ── BUTTON ───────────────────────────────────────── */
+    .btn-main {
+      width: 100%;
+      padding: 0.95rem 2rem;
+      background: linear-gradient(90deg, var(--bronze-dark) 0%, var(--bronze) 50%, var(--gold-light) 100%);
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      border: none;
+      border-radius: var(--radius-btn);
+      color: var(--dark-0);
+      font-family: inherit;
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.15s ease;
+      box-shadow: 0 12px 32px rgba(0,0,0,.7), 0 0 0 1px rgba(234,216,177,.1) inset;
+      position: relative;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .btn-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+    .btn-main:hover { background-position: 0% 0; transform: translateY(-1px); box-shadow: 0 16px 42px rgba(0,0,0,.8); }
+    .btn-main:hover::after { transform: translateX(100%); }
+    .btn-main:active { transform: translateY(0); }
+    .btn-main:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    /* ── ERROR MSG ────────────────────────────────────── */
+    .error-msg {
+      display: none;
+      background: rgba(126,18,18,.18);
+      border: 1px solid rgba(126,18,18,.45);
+      border-radius: 10px;
+      color: #e87575;
+      font-size: 0.82rem;
+      padding: 0.7rem 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .error-msg.show { display: block; }
+
+    /* ── SPINNER ──────────────────────────────────────── */
+    .spinner {
+      display: inline-block;
+      width: 15px; height: 15px;
+      border: 2px solid rgba(5,5,6,.35);
+      border-top-color: var(--dark-0);
+      border-radius: 50%;
+      animation: spin 0.65s linear infinite;
+      vertical-align: middle;
+      margin-right: 7px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── SCREENS ──────────────────────────────────────── */
+    #screen-login    { display: flex; }
+    #screen-dashboard { display: none; }
+
+    /* ── DASHBOARD HEADER ─────────────────────────────── */
+    .dash-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.6rem;
+    }
+
+    .promotor-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.2;
+    }
+
+    .promotor-code {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--bronze);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .btn-logout {
+      padding: 0.4rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--tr);
+      white-space: nowrap;
+    }
+    .btn-logout:hover { border-color: var(--border-focus); color: var(--gold); background: rgba(198,162,95,.07); }
+
+    /* ── ESTADO BADGE ─────────────────────────────────── */
+    .estado-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius-btn);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .estado-badge.sin-enviar  { background: rgba(198,162,95,.1);  border: 1px solid rgba(198,162,95,.3);  color: var(--bronze); }
+    .estado-badge.pagado      { background: rgba(34,197,94,.1);   border: 1px solid rgba(34,197,94,.35);  color: #4ade80; }
+    .estado-badge.pendiente   { background: rgba(234,179,8,.1);   border: 1px solid rgba(234,179,8,.35);  color: #fbbf24; }
+
+    /* ── STAT CARDS ───────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+
+    @media (min-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: border-color var(--tr);
+    }
+    .stat-card:hover { border-color: rgba(198,162,95,.35); }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.1;
+    }
+
+    .stat-value.highlight {
+      background: linear-gradient(135deg, var(--gold-light), var(--bronze));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── BREAKDOWN TABLE ──────────────────────────────── */
+    .breakdown {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    .breakdown thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .breakdown th {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .breakdown th:not(:first-child),
+    .breakdown td:not(:first-child) { text-align: right; }
+
+    .breakdown td {
+      padding: 0.6rem 0.75rem;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(234,216,177,.06);
+    }
+
+    .breakdown tr:last-child td { border-bottom: none; }
+
+    .breakdown .row-label {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .breakdown .total-row td {
+      border-top: 1px solid var(--border);
+      border-bottom: none;
+      padding-top: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .channel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+    }
+    .channel-badge.online  { background: rgba(34,197,94,.12);  color: #4ade80; }
+    .channel-badge.offline { background: rgba(198,162,95,.12); color: var(--bronze); }
+    .channel-badge.total   { background: rgba(234,216,177,.08); color: var(--gold); }
+
+    /* ── PAGO SECTION ─────────────────────────────────── */
+    .pago-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .pago-item {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .pago-item-label {
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .pago-item-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .pago-item.destacado {
+      border-color: rgba(198,162,95,.35);
+      background: rgba(198,162,95,.06);
+    }
+
+    .pago-item.destacado .pago-item-value {
+      background: linear-gradient(135deg, var(--gold-light), var(--bronze));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── CANALES ACTIVADOS ────────────────────────────── */
+    .canales-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.2rem;
+    }
+
+    .canal-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.32rem 0.85rem;
+      border-radius: var(--radius-btn);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .canal-pill.on  { background: rgba(34,197,94,.12);  border: 1px solid rgba(34,197,94,.3);  color: #4ade80; }
+    .canal-pill.off { background: rgba(234,216,177,.05); border: 1px solid var(--border);       color: var(--text-muted); }
+
+    .canal-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .canal-pill.on  .canal-dot { background: #4ade80; box-shadow: 0 0 5px #4ade8099; }
+    .canal-pill.off .canal-dot { background: var(--text-muted); }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 1;
+      padding: 1.5rem 1rem 2rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: rgba(234,216,177,.18);
+      letter-spacing: 0.08em;
+    }
+    footer a { color: rgba(234,216,177,.35); text-decoration: none; }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 480px) {
+      .pago-grid { grid-template-columns: 1fr; }
+      .dash-topbar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-wrap">
+      <img src="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png"
+           alt="Esencia Paradise" width="120" height="120" />
+    </div>
+    <p class="eyebrow">International Bachata Congress · Barcelona 2026</p>
+    <h1>Portal de Promotores</h1>
+  </header>
+
+  <!-- ── LOGIN ──────────────────────────────────────────── -->
+  <main id="screen-login">
+    <div class="card">
+
+      <p class="section-label">Acceso</p>
+
+      <div class="field">
+        <label for="inp-email">Email</label>
+        <input type="email" id="inp-email" placeholder="tu@email.com" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="inp-codigo">Código de promotor</label>
+        <input type="text" id="inp-codigo" placeholder="Ej: sabrineynicholas" autocomplete="off" />
+      </div>
+
+      <button class="btn-main" id="btn-acceder" onclick="handleLogin()">
+        Acceder
+      </button>
+
+      <div class="error-msg" id="login-error">
+        Credenciales incorrectas. Verifica tu email y código de promotor.
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── DASHBOARD ──────────────────────────────────────── -->
+  <main id="screen-dashboard" class="wide">
+    <div class="card">
+
+      <!-- Topbar -->
+      <div class="dash-topbar">
+        <div>
+          <div class="promotor-name" id="dash-nombre">—</div>
+          <div class="promotor-code" id="dash-codigo">—</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;">
+          <span id="dash-estado" class="estado-badge sin-enviar">Sin enviar</span>
+          <button class="btn-logout" onclick="handleLogout()">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <!-- Canales activados -->
+      <p class="section-label">Canales activados</p>
+      <div class="canales-row">
+        <span class="canal-pill off" id="canal-online">
+          <span class="canal-dot"></span> Online
+        </span>
+        <span class="canal-pill off" id="canal-offline">
+          <span class="canal-dot"></span> Offline
+        </span>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Stats rápidas -->
+      <p class="section-label">Resumen</p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Entradas vendidas</div>
+          <div class="stat-value" id="stat-entradas">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Reembolsadas</div>
+          <div class="stat-value" id="stat-reembolsadas">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Importe total</div>
+          <div class="stat-value highlight" id="stat-importe">0,00 €</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Comisión generada</div>
+          <div class="stat-value highlight" id="stat-comision">0,00 €</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Desglose Online / Offline -->
+      <p class="section-label">Desglose por canal</p>
+      <table class="breakdown">
+        <thead>
+          <tr>
+            <th>Canal</th>
+            <th>Entradas</th>
+            <th>Reembolsos</th>
+            <th>Importe</th>
+            <th>Comisión</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="channel-badge online">Online</span></td>
+            <td id="t-ent-online">0</td>
+            <td id="t-ref-online">0</td>
+            <td id="t-imp-online">0,00 €</td>
+            <td id="t-com-online">0,00 €</td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge offline">Offline</span></td>
+            <td id="t-ent-offline">0</td>
+            <td id="t-ref-offline">0</td>
+            <td id="t-imp-offline">0,00 €</td>
+            <td id="t-com-offline">0,00 €</td>
+          </tr>
+          <tr class="total-row">
+            <td><span class="channel-badge total">Total</span></td>
+            <td id="t-ent-total">0</td>
+            <td id="t-ref-total">0</td>
+            <td id="t-imp-total">0,00 €</td>
+            <td id="t-com-total">0,00 €</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="divider"></div>
+
+      <!-- Liquidación -->
+      <p class="section-label">Liquidación</p>
+      <div class="pago-grid">
+        <div class="pago-item destacado">
+          <div class="pago-item-label">A pagar al promotor</div>
+          <div class="pago-item-value" id="dash-a-pagar">0,00 €</div>
+        </div>
+        <div class="pago-item">
+          <div class="pago-item-label">A recibir</div>
+          <div class="pago-item-value" id="dash-a-recibir">0,00 €</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Esencia Paradise · Barcelona ·
+    <a href="https://esenciaparadise.com" target="_blank" rel="noopener">esenciaparadise.com</a>
+  </footer>
+
+  <script>
+    const WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook-test/40fcebd1-0668-43b0-a611-cb61023024a8';
+
+    const btnAcceder  = document.getElementById('btn-acceder');
+    const loginError  = document.getElementById('login-error');
+    const screenLogin = document.getElementById('screen-login');
+    const screenDash  = document.getElementById('screen-dashboard');
+
+    // Enter key en los inputs
+    ['inp-email', 'inp-codigo'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', e => {
+        if (e.key === 'Enter') handleLogin();
+      });
+    });
+
+    async function handleLogin() {
+      const email  = document.getElementById('inp-email').value.trim();
+      const codigo = document.getElementById('inp-codigo').value.trim();
+
+      if (!email || !codigo) {
+        showError('Introduce tu email y código de promotor.');
+        return;
+      }
+
+      loginError.classList.remove('show');
+      btnAcceder.disabled = true;
+      btnAcceder.innerHTML = '<span class="spinner"></span> Verificando…';
+
+      try {
+        const res = await fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ Email: email, Codigo: codigo }),
+        });
+
+        if (!res.ok) throw new Error('http_error');
+
+        const data = await res.json();
+
+        // n8n devuelve array de items; extraemos el primer json
+        const items = Array.isArray(data) ? data : [];
+        const promotor = items.length > 0 ? (items[0].json ?? items[0]) : null;
+
+        if (!promotor) {
+          showError('Credenciales incorrectas. Verifica tu email y código de promotor.');
+          return;
+        }
+
+        renderDashboard(promotor);
+
+      } catch (err) {
+        showError('Error de conexión. Inténtalo de nuevo.');
+      } finally {
+        btnAcceder.disabled = false;
+        btnAcceder.innerHTML = 'Acceder';
+      }
+    }
+
+    function showError(msg) {
+      loginError.textContent = msg;
+      loginError.classList.add('show');
+    }
+
+    function renderDashboard(p) {
+      // Topbar
+      document.getElementById('dash-nombre').textContent = p.Promotor ?? '—';
+      document.getElementById('dash-codigo').textContent = 'Código: ' + (p.Codigo ?? '—');
+
+      // Estado badge
+      const estadoEl  = document.getElementById('dash-estado');
+      const estado    = (p.Estado ?? 'Sin enviar').toLowerCase();
+      estadoEl.textContent = p.Estado ?? 'Sin enviar';
+      estadoEl.className   = 'estado-badge';
+      if (estado.includes('pagado'))    estadoEl.classList.add('pagado');
+      else if (estado.includes('pend')) estadoEl.classList.add('pendiente');
+      else                               estadoEl.classList.add('sin-enviar');
+
+      // Canales
+      setCanal('canal-online',  p.Online_activado  === 1 || p.Online_activado  === true);
+      setCanal('canal-offline', p.Offline_activado === 1 || p.Offline_activado === true);
+
+      // Stats
+      setText('stat-entradas',     p.Total_entradas ?? 0);
+      setText('stat-reembolsadas', p.Total_entradas_reembolsadas ?? 0);
+      setText('stat-importe',      p.Importe_total ?? '0,00 €');
+      setText('stat-comision',     p.Comision_real ?? '0,00 €');
+
+      // Tabla desglose
+      setText('t-ent-online',  p.Entradas_online ?? 0);
+      setText('t-ref-online',  p.Entradas_reembolsados_online ?? 0);
+      setText('t-imp-online',  p.Importe_online ?? '0,00 €');
+      setText('t-com-online',  p.Comision_online ?? '0,00 €');
+
+      setText('t-ent-offline', p.Entradas_offline ?? 0);
+      setText('t-ref-offline', p.Entradas_reembolsadas_offline ?? 0);
+      setText('t-imp-offline', p.Importe_offline ?? '0,00 €');
+      setText('t-com-offline', p.Comision_offline ?? '0,00 €');
+
+      setText('t-ent-total',   p.Total_entradas ?? 0);
+      setText('t-ref-total',   p.Total_entradas_reembolsadas ?? 0);
+      setText('t-imp-total',   p.Importe_total ?? '0,00 €');
+      setText('t-com-total',   p.Comision_real ?? '0,00 €');
+
+      // Liquidación
+      setText('dash-a-pagar',   p.A_pagar_al_promotor ?? '0,00 €');
+      setText('dash-a-recibir', p.A_recibir ?? '0,00 €');
+
+      // Cambiar pantalla
+      screenLogin.style.display = 'none';
+      screenDash.style.display  = 'flex';
+    }
+
+    function setCanal(id, activo) {
+      const el = document.getElementById(id);
+      el.className = 'canal-pill ' + (activo ? 'on' : 'off');
+    }
+
+    function setText(id, val) {
+      document.getElementById(id).textContent = val;
+    }
+
+    function handleLogout() {
+      document.getElementById('inp-email').value  = '';
+      document.getElementById('inp-codigo').value = '';
+      loginError.classList.remove('show');
+      screenDash.style.display  = 'none';
+      screenLogin.style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
