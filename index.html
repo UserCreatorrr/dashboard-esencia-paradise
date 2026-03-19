@@ -21,9 +21,9 @@
       --bronze-dark:  #8A6230;
       --crimson:      #6B0A0A;
       --crimson-deep: #3A0505;
-      --dark-0:       #3a0606;
-      --dark-1:       #2a0404;
-      --dark-2:       #1e0303;
+      --dark-0:       #080305;
+      --dark-1:       #0d0408;
+      --dark-2:       #12060a;
       --card-bg:      rgba(8, 2, 2, 0.22);
       --border:       rgba(226, 192, 122, 0.35);
       --border-focus: rgba(201, 154, 80, 0.70);
@@ -57,8 +57,9 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 120% 90% at -5% 110%, rgba(90, 5, 5, .80) 0%, rgba(50, 3, 3, .50) 50%, transparent 75%),
-        radial-gradient(ellipse 70% 60% at 105% -5%, rgba(70, 5, 5, .50) 0%, transparent 60%);
+        radial-gradient(ellipse 75% 65% at 105% 55%, rgba(110, 8, 8, .80) 0%, rgba(70, 5, 5, .45) 45%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(80, 5, 5, .55) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 0% 100%, rgba(60, 4, 4, .30) 0%, transparent 55%);
       pointer-events: none;
       z-index: 0;
     }
@@ -556,7 +557,7 @@
 
       <div class="field">
         <label for="inp-codigo">Código de promotor</label>
-        <input type="text" id="inp-codigo" placeholder="Ej: sabrineynicholas" autocomplete="off" />
+        <input type="text" id="inp-codigo" placeholder="PROMOCODE" autocomplete="off" />
       </div>
 
       <button class="btn-main" id="btn-acceder" onclick="handleLogin()">
