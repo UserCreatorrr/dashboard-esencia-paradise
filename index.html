@@ -96,8 +96,8 @@
     }
 
     .logo-wrap img {
-      width: 140px;
-      height: 140px;
+      width: 280px;
+      height: 280px;
       object-fit: contain;
       filter:
         drop-shadow(0 0 30px rgba(212, 175, 106, .55))
@@ -149,7 +149,7 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius-card);
-      padding: clamp(2rem, 6vw, 3.2rem);
+      padding: clamp(1.8rem, 5.4vw, 2.9rem);
       box-shadow:
         0 32px 80px rgba(0, 0, 0, .5),
         0 0 0 1px rgba(226, 192, 122, .12) inset,
@@ -207,8 +207,8 @@
       border-radius: var(--radius-input);
       color: var(--gold-light);
       font-family: 'Montserrat', inherit;
-      font-size: 1.05rem;
-      padding: 1.1rem 1.4rem;
+      font-size: 0.95rem;
+      padding: 1rem 1.26rem;
       outline: none;
       transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
       -webkit-appearance: none;
@@ -391,7 +391,7 @@
 
     .stat-value {
       font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
+      font-size: 1.26rem;
       font-weight: 700;
       color: #FFF8E8;
       line-height: 1.1;
@@ -405,7 +405,7 @@
     }
 
     /* ── BREAKDOWN TABLE ──────────────────────────────── */
-    .breakdown { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .breakdown { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
 
     .breakdown thead tr { border-bottom: 1px solid var(--border); }
 
@@ -477,7 +477,7 @@
 
     .pago-item-value {
       font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--gold-light);
     }
@@ -627,6 +627,15 @@
       background: linear-gradient(90deg, var(--border), transparent);
     }
 
+    .pdf-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      max-width: 680px;
+    }
+
     .pdf-frame {
       width: 100%;
       height: 680px;
@@ -661,8 +670,8 @@
 
   <header>
     <div class="logo-wrap">
-      <img src="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png" alt="Esencia Paradise" width="120"
-        height="120" />
+      <img src="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png" alt="Esencia Paradise" width="280"
+        height="280" />
     </div>
     <p class="eyebrow" id="hdr-eyebrow">International Bachata Congress · Barcelona 2026</p>
     <h1 id="hdr-title">Portal de Promotores</h1>
@@ -808,6 +817,7 @@
   <!-- PDF Guide -->
   <div class="pdf-section" id="pdf-section">
     <p class="pdf-label" id="lbl-pdf">Guía del Promotor</p>
+    <p class="pdf-desc" id="lbl-pdf-desc">Este manual recoge todos los insights clave del evento para que puedas vender más y mejor. Úsalo antes de hablar con tus contactos — cuanto más lo conozcas, más entradas venderás.</p>
     <iframe id="pdf-frame" class="pdf-frame"
       src="https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview"
       allow="autoplay" loading="lazy"></iframe>
@@ -1009,6 +1019,7 @@
         entradasUnit: 'entradas',
         tu: '· TÚ',
         pdfLabel: 'Guía del Promotor',
+        pdfDesc: 'Este manual recoge todos los insights clave del evento para que puedas vender más y mejor. Úsalo antes de hablar con tus contactos — cuanto más lo conozcas, más entradas venderás.',
         pdfSrc: 'https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview',
       },
       en: {
@@ -1039,6 +1050,7 @@
         entradasUnit: 'tickets',
         tu: '· YOU',
         pdfLabel: 'Promoter Guide',
+        pdfDesc: 'This guide contains all the key insights about the event to help you sell more tickets. Read it before reaching out to your contacts — the more you know it, the more you\'ll sell.',
         pdfSrc: 'https://drive.google.com/file/d/1qHoqBlqKnIC2qBlrRcjqicaOV8NNkHeN/preview',
       }
     };
@@ -1071,6 +1083,7 @@
       document.getElementById('lbl-a-recibir').textContent = t.aRecibir;
       document.getElementById('lbl-top3').textContent = t.top3;
       document.getElementById('lbl-pdf').textContent = t.pdfLabel;
+      document.getElementById('lbl-pdf-desc').textContent = t.pdfDesc;
       const frame = document.getElementById('pdf-frame');
       if (frame.src !== t.pdfSrc) frame.src = t.pdfSrc;
     }
