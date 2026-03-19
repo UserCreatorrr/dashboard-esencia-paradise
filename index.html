@@ -51,24 +51,42 @@
       overflow-x: hidden;
     }
 
+    /* ── ANIMACIONES DE FONDO ──────────────────────────── */
+    @keyframes bg-drift {
+      0%   { transform: scale(1)    translate(0%,    0%);   opacity: 1;    }
+      25%  { transform: scale(1.06) translate(-2.5%, 1.5%); opacity: 0.92; }
+      50%  { transform: scale(1.10) translate(-4%,   3%);   opacity: 0.85; }
+      75%  { transform: scale(1.06) translate(-2%,   1.5%); opacity: 0.92; }
+      100% { transform: scale(1)    translate(0%,    0%);   opacity: 1;    }
+    }
+
+    @keyframes gold-sweep {
+      0%   { transform: translateX(0%)   translateY(0%);   opacity: 1;    }
+      33%  { transform: translateX(4%)   translateY(-3%);  opacity: 0.70; }
+      66%  { transform: translateX(-3%)  translateY(4%);   opacity: 0.85; }
+      100% { transform: translateX(0%)   translateY(0%);   opacity: 1;    }
+    }
+
     /* Fondo: gradiente crimson desde esquina inferior izquierda + línea diagonal dorada */
     body::before {
       content: '';
       position: fixed;
-      inset: 0;
+      inset: -10%;           /* un poco más grande para que el drift no deje bordes */
       background:
         radial-gradient(ellipse 75% 65% at 105% 55%, rgba(110, 8, 8, .80) 0%, rgba(70, 5, 5, .45) 45%, transparent 70%),
         radial-gradient(ellipse 50% 40% at 100% 100%, rgba(80, 5, 5, .55) 0%, transparent 55%),
         radial-gradient(ellipse 40% 35% at 0% 100%, rgba(60, 4, 4, .30) 0%, transparent 55%);
       pointer-events: none;
       z-index: 0;
+      animation: bg-drift 18s ease-in-out infinite;
+      will-change: transform, opacity;
     }
 
     /* Línea diagonal dorada */
     body::after {
       content: '';
       position: fixed;
-      inset: 0;
+      inset: -10%;
       background: linear-gradient(
         135deg,
         transparent 0%,
@@ -81,6 +99,8 @@
       );
       pointer-events: none;
       z-index: 0;
+      animation: gold-sweep 24s ease-in-out infinite;
+      will-change: transform, opacity;
     }
 
     /* ── HEADER ───────────────────────────────────────── */
