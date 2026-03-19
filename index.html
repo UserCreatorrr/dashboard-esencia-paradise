@@ -808,9 +808,12 @@
         if (Array.isArray(data) && data.length > 0) {
           const items = data.map(d => d.json ?? d);
           if (items.length > 1) {
-            // Modo ranking: buscar al promotor logueado por Codigo
-            rankingItems = items;
-            promotor = items.find(d => d.Codigo === codigo) ?? items[0];
+            // Buscar al promotor logueado por Codigo (orden no garantizado)
+            promotor = items.find(d => d.Codigo === codigo);
+            // El resto son los top 3 del ranking
+            rankingItems = items.filter(d => d.Codigo !== codigo).slice(0, 3);
+            // Fallback por si el promotor no está en el array
+            if (!promotor) promotor = items[0];
           } else {
             promotor = items[0];
           }
