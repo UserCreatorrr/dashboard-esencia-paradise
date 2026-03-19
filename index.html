@@ -24,8 +24,8 @@
       --dark-0:       #080306;
       --dark-1:       #0D0608;
       --dark-2:       #140A0A;
-      --card-bg:      rgba(15, 6, 6, 0.42);
-      --border:       rgba(226, 192, 122, 0.28);
+      --card-bg:      rgba(8, 2, 2, 0.22);
+      --border:       rgba(226, 192, 122, 0.35);
       --border-focus: rgba(201, 154, 80, 0.70);
       --text-muted:   rgba(226, 192, 122, 0.60);
       --radius-card:  18px;
@@ -135,7 +135,7 @@
     /* ── MAIN ─────────────────────────────────────────── */
     main {
       width: 100%;
-      max-width: 560px;
+      max-width: 640px;
       padding: 0 1.25rem 4rem;
       position: relative;
       z-index: 1;
@@ -155,13 +155,13 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius-card);
-      padding: clamp(1.6rem, 5vw, 2.4rem);
+      padding: clamp(2rem, 6vw, 3.2rem);
       box-shadow:
-        0 32px 80px rgba(0, 0, 0, .9),
-        0 0 0 1px rgba(212, 175, 106, .05) inset,
-        inset 0 1px 0 rgba(212, 175, 106, .08);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+        0 32px 80px rgba(0, 0, 0, .5),
+        0 0 0 1px rgba(226, 192, 122, .12) inset,
+        inset 0 1px 0 rgba(226, 192, 122, .15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     /* ── SECTION LABEL ────────────────────────────────── */
