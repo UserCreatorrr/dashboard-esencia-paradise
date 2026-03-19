@@ -21,9 +21,9 @@
       --bronze-dark:  #8A6230;
       --crimson:      #6B0A0A;
       --crimson-deep: #3A0505;
-      --dark-0:       #080306;
-      --dark-1:       #0D0608;
-      --dark-2:       #140A0A;
+      --dark-0:       #1c0404;
+      --dark-1:       #240606;
+      --dark-2:       #2e0808;
       --card-bg:      rgba(8, 2, 2, 0.22);
       --border:       rgba(226, 192, 122, 0.35);
       --border-focus: rgba(201, 154, 80, 0.70);
@@ -57,8 +57,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at -10% 110%, rgba(107, 10, 10, .38) 0%, rgba(58, 5, 5, .18) 45%, transparent 65%),
-        radial-gradient(ellipse 45% 35% at 110% -5%, rgba(90, 8, 8, .12) 0%, transparent 55%);
+        radial-gradient(ellipse 110% 80% at -5% 105%, rgba(120, 8, 8, .90) 0%, rgba(80, 5, 5, .60) 40%, transparent 68%),
+        radial-gradient(ellipse 60% 50% at 105% 0%, rgba(100, 8, 8, .45) 0%, transparent 55%);
       pointer-events: none;
       z-index: 0;
     }
@@ -105,7 +105,7 @@
 
     .eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
+      font-size: 0.78rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--bronze);
@@ -114,7 +114,7 @@
 
     header h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.35rem, 3.5vw, 2.2rem);
+      font-size: clamp(1.9rem, 5vw, 3rem);
       font-weight: 700;
       text-align: center;
       background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 40%, var(--bronze) 70%, var(--gold-light) 100%);
@@ -135,8 +135,8 @@
     /* ── MAIN ─────────────────────────────────────────── */
     main {
       width: 100%;
-      max-width: 640px;
-      padding: 0 1.25rem 4rem;
+      max-width: 720px;
+      padding: 0 1.5rem 4rem;
       position: relative;
       z-index: 1;
     }
@@ -196,7 +196,7 @@
 
     label {
       font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -208,13 +208,13 @@
 
     input {
       width: 100%;
-      background: rgba(255, 255, 255, .03);
+      background: rgba(255, 255, 255, .04);
       border: 1px solid var(--border);
       border-radius: var(--radius-input);
       color: var(--gold-light);
       font-family: 'Montserrat', inherit;
-      font-size: 0.92rem;
-      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      padding: 1rem 1.2rem;
       outline: none;
       transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
       -webkit-appearance: none;
