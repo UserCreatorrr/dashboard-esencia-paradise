@@ -839,12 +839,8 @@
 
       <!-- Liquidación -->
       <p class="section-label" id="lbl-liquidacion">Liquidación</p>
-      <div class="pago-grid">
+      <div>
         <div class="pago-item destacado">
-          <div class="pago-item-label" id="lbl-a-pagar">A pagar al promotor</div>
-          <div class="pago-item-value" id="dash-a-pagar">0,00 €</div>
-        </div>
-        <div class="pago-item">
           <div class="pago-item-label" id="lbl-a-recibir">A recibir</div>
           <div class="pago-item-value" id="dash-a-recibir">0,00 €</div>
         </div>
@@ -996,8 +992,7 @@
       setText('t-com-total', p.Comision_real ?? '0,00 €');
 
       // Liquidación
-      setText('dash-a-pagar', p.A_pagar_al_promotor ?? '0,00 €');
-      setText('dash-a-recibir', p.A_recibir ?? '0,00 €');
+      setText('dash-a-recibir', p.A_pagar_al_promotor ?? '0,00 €');
 
       // Ranking
       if (ranking && ranking.length >= 1) {
@@ -1058,7 +1053,6 @@
         desglose: 'Desglose por canal',
         thCanal: 'Canal', thEntradas: 'Entradas', thReembolsos: 'Reembolsos', thImporte: 'Importe', thComision: 'Comisión',
         liquidacion: 'Liquidación',
-        aPagar: 'A pagar al promotor',
         aRecibir: 'A recibir',
         top3: 'Top 3 Promotores',
         entradasUnit: 'entradas',
@@ -1091,7 +1085,6 @@
         desglose: 'Breakdown by channel',
         thCanal: 'Channel', thEntradas: 'Tickets', thReembolsos: 'Refunds', thImporte: 'Amount', thComision: 'Commission',
         liquidacion: 'Settlement',
-        aPagar: 'Payable to promoter',
         aRecibir: 'To receive',
         top3: 'Top 3 Promoters',
         entradasUnit: 'tickets',
@@ -1129,7 +1122,6 @@
       document.getElementById('th-importe').textContent = t.thImporte;
       document.getElementById('th-comision').textContent = t.thComision;
       document.getElementById('lbl-liquidacion').textContent = t.liquidacion;
-      document.getElementById('lbl-a-pagar').textContent = t.aPagar;
       document.getElementById('lbl-a-recibir').textContent = t.aRecibir;
       document.getElementById('lbl-top3').textContent = t.top3;
       document.getElementById('lbl-pdf').textContent = t.pdfLabel;
