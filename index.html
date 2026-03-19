@@ -575,6 +575,66 @@
       color: var(--text-muted);
     }
 
+    /* ── LANG BUTTON ─────────────────────────────────── */
+    .btn-lang {
+      position: fixed;
+      top: 1.1rem;
+      right: 1.2rem;
+      z-index: 100;
+      padding: 0.32rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      background: rgba(8,3,5,.65);
+      backdrop-filter: blur(8px);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--tr);
+    }
+    .btn-lang:hover { border-color: var(--border-focus); color: var(--gold-bright); }
+
+    /* ── PDF SECTION ──────────────────────────────────── */
+    .pdf-section {
+      display: none;
+      width: 100%;
+      max-width: 900px;
+      padding: 0 1.5rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    .pdf-section.visible { display: block; }
+
+    .pdf-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .pdf-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 680px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(180,100,20,.06);
+    }
+
     /* ── FOOTER ───────────────────────────────────────── */
     footer {
       position: relative; z-index: 1;
@@ -597,28 +657,30 @@
 
 <body>
 
+  <button class="btn-lang" id="btn-lang" onclick="toggleLang()">EN</button>
+
   <header>
     <div class="logo-wrap">
       <img src="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png" alt="Esencia Paradise" width="120"
         height="120" />
     </div>
-    <p class="eyebrow">International Bachata Congress · Barcelona 2026</p>
-    <h1>Portal de Promotores</h1>
+    <p class="eyebrow" id="hdr-eyebrow">International Bachata Congress · Barcelona 2026</p>
+    <h1 id="hdr-title">Portal de Promotores</h1>
   </header>
 
   <!-- ── LOGIN ──────────────────────────────────────────── -->
   <main id="screen-login">
     <div class="card">
 
-      <p class="section-label">Acceso</p>
+      <p class="section-label" id="lbl-acceso">Acceso</p>
 
       <div class="field">
-        <label for="inp-email">Email</label>
+        <label for="inp-email" id="lbl-email">Email</label>
         <input type="email" id="inp-email" placeholder="tu@email.com" autocomplete="email" />
       </div>
 
       <div class="field">
-        <label for="inp-codigo">Código de promotor</label>
+        <label for="inp-codigo" id="lbl-codigo">Código de promotor</label>
         <input type="text" id="inp-codigo" placeholder="PROMOCODE" autocomplete="off" />
       </div>
 
@@ -650,7 +712,7 @@
       </div>
 
       <!-- Canales activados -->
-      <p class="section-label">Canales activados</p>
+      <p class="section-label" id="lbl-canales">Canales activados</p>
       <div class="canales-row">
         <span class="canal-pill off" id="canal-online">
           <span class="canal-dot"></span> Online
@@ -663,18 +725,18 @@
       <div class="divider"></div>
 
       <!-- Stats rápidas -->
-      <p class="section-label">Resumen</p>
+      <p class="section-label" id="lbl-resumen">Resumen</p>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label">Entradas vendidas</div>
+          <div class="stat-label" id="lbl-entradas-vendidas">Entradas vendidas</div>
           <div class="stat-value" id="stat-entradas">0</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Reembolsadas</div>
+          <div class="stat-label" id="lbl-reembolsadas">Reembolsadas</div>
           <div class="stat-value" id="stat-reembolsadas">0</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">A cobrar</div>
+          <div class="stat-label" id="lbl-a-cobrar">A cobrar</div>
           <div class="stat-value highlight" id="stat-comision">0,00 €</div>
         </div>
       </div>
@@ -682,15 +744,15 @@
       <div class="divider"></div>
 
       <!-- Desglose Online / Offline -->
-      <p class="section-label">Desglose por canal</p>
+      <p class="section-label" id="lbl-desglose">Desglose por canal</p>
       <table class="breakdown">
         <thead>
           <tr>
-            <th>Canal</th>
-            <th>Entradas</th>
-            <th>Reembolsos</th>
-            <th>Importe</th>
-            <th>Comisión</th>
+            <th id="th-canal">Canal</th>
+            <th id="th-entradas">Entradas</th>
+            <th id="th-reembolsos">Reembolsos</th>
+            <th id="th-importe">Importe</th>
+            <th id="th-comision">Comisión</th>
           </tr>
         </thead>
         <tbody>
@@ -721,14 +783,14 @@
       <div class="divider"></div>
 
       <!-- Liquidación -->
-      <p class="section-label">Liquidación</p>
+      <p class="section-label" id="lbl-liquidacion">Liquidación</p>
       <div class="pago-grid">
         <div class="pago-item destacado">
-          <div class="pago-item-label">A pagar al promotor</div>
+          <div class="pago-item-label" id="lbl-a-pagar">A pagar al promotor</div>
           <div class="pago-item-value" id="dash-a-pagar">0,00 €</div>
         </div>
         <div class="pago-item">
-          <div class="pago-item-label">A recibir</div>
+          <div class="pago-item-label" id="lbl-a-recibir">A recibir</div>
           <div class="pago-item-value" id="dash-a-recibir">0,00 €</div>
         </div>
       </div>
@@ -736,12 +798,20 @@
       <!-- Ranking Top 3 (solo para promotores con >4 ventas) -->
       <div id="section-ranking">
         <div class="divider"></div>
-        <p class="section-label">Top 3 Promotores</p>
+        <p class="section-label" id="lbl-top3">Top 3 Promotores</p>
         <div class="ranking-list" id="ranking-list"></div>
       </div>
 
     </div>
   </main>
+
+  <!-- PDF Guide -->
+  <div class="pdf-section" id="pdf-section">
+    <p class="pdf-label" id="lbl-pdf">Guía del Promotor</p>
+    <iframe id="pdf-frame" class="pdf-frame"
+      src="https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview"
+      allow="autoplay" loading="lazy"></iframe>
+  </div>
 
   <footer>
     &copy; 2026 Esencia Paradise · Barcelona ·
@@ -885,11 +955,13 @@
       // Cambiar pantalla
       screenLogin.style.display = 'none';
       screenDash.style.display = 'flex';
+      document.getElementById('pdf-section').classList.add('visible');
     }
 
     function renderRanking(items, miCodigo) {
       const medals = ['🥇', '🥈', '🥉'];
       const classes = ['gold', 'silver', 'bronze'];
+      const t = LANG[currentLang];
       const list = document.getElementById('ranking-list');
       list.innerHTML = items.slice(0, 3).map((p, i) => {
         const esYo = p.Codigo === miCodigo;
@@ -897,15 +969,115 @@
           <div class="rank-medal ${classes[i]}">${medals[i]}</div>
           <div class="rank-name">
             ${p.Promotor ?? '—'}
-            ${esYo ? '<small>· TÚ</small>' : ''}
+            ${esYo ? `<small>${t.tu}</small>` : ''}
           </div>
           <div class="rank-stats">
-            <div class="rank-importe">${p.Importe_total ?? '0,00 €'}</div>
-            <div class="rank-entradas">${p.Total_entradas ?? 0} entradas</div>
+            <div class="rank-entradas">${p.Total_entradas ?? 0} ${t.entradasUnit}</div>
           </div>
         </div>`;
       }).join('');
       document.getElementById('section-ranking').style.display = 'block';
+    }
+
+    // ── I18N ──────────────────────────────────────────────
+    const LANG = {
+      es: {
+        langBtn: 'EN',
+        eyebrow: 'International Bachata Congress · Barcelona 2026',
+        title: 'Portal de Promotores',
+        lblAcceso: 'Acceso',
+        lblEmail: 'Email',
+        lblCodigo: 'Código de promotor',
+        placeholderEmail: 'tu@email.com',
+        btnAcceder: 'Acceder',
+        errCampos: 'Introduce tu email y código de promotor.',
+        errCredenciales: 'Credenciales incorrectas. Verifica tu email y código de promotor.',
+        errConexion: 'Error de conexión. Comprueba tu red e inténtalo de nuevo.',
+        verificando: 'Verificando…',
+        cerrarSesion: 'Cerrar sesión',
+        canales: 'Canales activados',
+        resumen: 'Resumen',
+        entradasVendidas: 'Entradas vendidas',
+        reembolsadas: 'Reembolsadas',
+        aCobrar: 'A cobrar',
+        desglose: 'Desglose por canal',
+        thCanal: 'Canal', thEntradas: 'Entradas', thReembolsos: 'Reembolsos', thImporte: 'Importe', thComision: 'Comisión',
+        liquidacion: 'Liquidación',
+        aPagar: 'A pagar al promotor',
+        aRecibir: 'A recibir',
+        top3: 'Top 3 Promotores',
+        entradasUnit: 'entradas',
+        tu: '· TÚ',
+        pdfLabel: 'Guía del Promotor',
+        pdfSrc: 'https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview',
+      },
+      en: {
+        langBtn: 'ES',
+        eyebrow: 'International Bachata Congress · Barcelona 2026',
+        title: 'Promoters Portal',
+        lblAcceso: 'Access',
+        lblEmail: 'Email',
+        lblCodigo: 'Promoter Code',
+        placeholderEmail: 'your@email.com',
+        btnAcceder: 'Log In',
+        errCampos: 'Please enter your email and promoter code.',
+        errCredenciales: 'Incorrect credentials. Please verify your email and promoter code.',
+        errConexion: 'Connection error. Please check your network and try again.',
+        verificando: 'Verifying…',
+        cerrarSesion: 'Log out',
+        canales: 'Active channels',
+        resumen: 'Summary',
+        entradasVendidas: 'Tickets sold',
+        reembolsadas: 'Refunded',
+        aCobrar: 'To collect',
+        desglose: 'Breakdown by channel',
+        thCanal: 'Channel', thEntradas: 'Tickets', thReembolsos: 'Refunds', thImporte: 'Amount', thComision: 'Commission',
+        liquidacion: 'Settlement',
+        aPagar: 'Payable to promoter',
+        aRecibir: 'To receive',
+        top3: 'Top 3 Promoters',
+        entradasUnit: 'tickets',
+        tu: '· YOU',
+        pdfLabel: 'Promoter Guide',
+        pdfSrc: 'https://drive.google.com/file/d/1qHoqBlqKnIC2qBlrRcjqicaOV8NNkHeN/preview',
+      }
+    };
+
+    let currentLang = 'es';
+
+    function applyLang(lang) {
+      const t = LANG[lang];
+      document.getElementById('btn-lang').textContent = t.langBtn;
+      document.getElementById('hdr-eyebrow').textContent = t.eyebrow;
+      document.getElementById('hdr-title').textContent = t.title;
+      document.getElementById('lbl-acceso').textContent = t.lblAcceso;
+      document.getElementById('lbl-email').textContent = t.lblEmail;
+      document.getElementById('lbl-codigo').textContent = t.lblCodigo;
+      document.getElementById('inp-email').placeholder = t.placeholderEmail;
+      document.getElementById('btn-acceder').textContent = t.btnAcceder;
+      document.getElementById('lbl-canales').textContent = t.canales;
+      document.getElementById('lbl-resumen').textContent = t.resumen;
+      document.getElementById('lbl-entradas-vendidas').textContent = t.entradasVendidas;
+      document.getElementById('lbl-reembolsadas').textContent = t.reembolsadas;
+      document.getElementById('lbl-a-cobrar').textContent = t.aCobrar;
+      document.getElementById('lbl-desglose').textContent = t.desglose;
+      document.getElementById('th-canal').textContent = t.thCanal;
+      document.getElementById('th-entradas').textContent = t.thEntradas;
+      document.getElementById('th-reembolsos').textContent = t.thReembolsos;
+      document.getElementById('th-importe').textContent = t.thImporte;
+      document.getElementById('th-comision').textContent = t.thComision;
+      document.getElementById('lbl-liquidacion').textContent = t.liquidacion;
+      document.getElementById('lbl-a-pagar').textContent = t.aPagar;
+      document.getElementById('lbl-a-recibir').textContent = t.aRecibir;
+      document.getElementById('lbl-top3').textContent = t.top3;
+      document.getElementById('lbl-pdf').textContent = t.pdfLabel;
+      const frame = document.getElementById('pdf-frame');
+      if (frame.src !== t.pdfSrc) frame.src = t.pdfSrc;
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      applyLang(currentLang);
     }
 
     function setCanal(id, activo) {
@@ -922,6 +1094,7 @@
       document.getElementById('inp-codigo').value = '';
       loginError.classList.remove('show');
       screenDash.style.display = 'none';
+      document.getElementById('pdf-section').classList.remove('visible');
       screenLogin.style.display = 'flex';
     }
   </script>
