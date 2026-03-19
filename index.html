@@ -131,6 +131,12 @@
       text-transform: uppercase;
       color: var(--bronze);
       font-weight: 400;
+      text-align: center;
+      width: 100%;
+      padding-left: 0.28em; /* compensa el letter-spacing del último carácter */
+    }
+    @media (max-width: 480px) {
+      .eyebrow { font-size: 0.62rem; letter-spacing: 0.12em; padding-left: 0.12em; }
     }
 
     header h1 {
