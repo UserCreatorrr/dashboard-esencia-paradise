@@ -24,10 +24,10 @@
       --dark-0:       #080305;
       --dark-1:       #0d0408;
       --dark-2:       #12060a;
-      --card-bg:      rgba(255, 220, 140, 0.06);
-      --border:       rgba(240, 208, 128, 0.45);
-      --border-focus: rgba(222, 176, 96, 0.80);
-      --text-muted:   rgba(240, 208, 128, 0.75);
+      --card-bg:      rgba(255, 220, 140, 0.10);
+      --border:       rgba(240, 208, 128, 0.55);
+      --border-focus: rgba(222, 176, 96, 0.90);
+      --text-muted:   rgba(240, 208, 128, 0.90);
       --radius-card:  18px;
       --radius-input: 10px;
       --radius-btn:   999px;
@@ -369,7 +369,7 @@
     @media (min-width: 600px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
 
     .stat-card {
-      background: rgba(107, 10, 10, .06);
+      background: rgba(180, 100, 20, .10);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1rem 1.1rem;
@@ -378,7 +378,7 @@
       gap: 0.35rem;
       transition: border-color var(--tr), background var(--tr);
     }
-    .stat-card:hover { border-color: rgba(184,135,58,.35); background: rgba(107,10,10,.10); }
+    .stat-card:hover { border-color: rgba(184,135,58,.55); background: rgba(180,100,20,.16); }
 
     .stat-label {
       font-family: 'Cinzel', serif;
@@ -393,7 +393,7 @@
       font-family: 'Cinzel', serif;
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--gold-light);
+      color: #FFF8E8;
       line-height: 1.1;
     }
 
@@ -425,8 +425,8 @@
 
     .breakdown td {
       padding: 0.6rem 0.75rem;
-      color: var(--gold);
-      border-bottom: 1px solid rgba(212, 175, 106, .05);
+      color: #FFF0C8;
+      border-bottom: 1px solid rgba(212, 175, 106, .10);
     }
 
     .breakdown tr:last-child td { border-bottom: none; }
@@ -459,7 +459,7 @@
     .pago-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.2rem; }
 
     .pago-item {
-      background: rgba(107,10,10,.05);
+      background: rgba(180,100,20,.10);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 0.9rem 1rem;
@@ -482,7 +482,7 @@
       color: var(--gold-light);
     }
 
-    .pago-item.destacado { border-color: rgba(184,135,58,.35); background: rgba(107,10,10,.10); }
+    .pago-item.destacado { border-color: rgba(184,135,58,.55); background: rgba(107,10,10,.18); }
 
     .pago-item.destacado .pago-item-value {
       background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--bronze));
@@ -512,6 +512,68 @@
     .canal-dot { width: 6px; height: 6px; border-radius: 50%; }
     .canal-pill.on  .canal-dot { background: #4ade80; box-shadow: 0 0 5px #4ade8099; }
     .canal-pill.off .canal-dot { background: var(--text-muted); }
+
+    /* ── RANKING ──────────────────────────────────────── */
+    #section-ranking { display: none; }
+
+    .ranking-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.2rem; }
+
+    .ranking-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem 1rem;
+      background: rgba(180,100,20,.10);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color var(--tr), background var(--tr);
+    }
+    .ranking-item.me {
+      border-color: rgba(222,176,96,.65);
+      background: rgba(107,10,10,.18);
+    }
+
+    .rank-medal {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      min-width: 1.8rem;
+      text-align: center;
+      line-height: 1;
+    }
+    .rank-medal.gold   { color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,.6); }
+    .rank-medal.silver { color: #D0D0D8; text-shadow: 0 0 8px rgba(200,200,208,.4); }
+    .rank-medal.bronze { color: var(--bronze); text-shadow: 0 0 8px rgba(222,176,96,.4); }
+
+    .rank-name {
+      flex: 1;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #FFF8E8;
+    }
+    .rank-name small {
+      display: block;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+      font-weight: 400;
+    }
+
+    .rank-stats { display: flex; flex-direction: column; align-items: flex-end; gap: 0.1rem; }
+
+    .rank-importe {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .rank-entradas {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
 
     /* ── FOOTER ───────────────────────────────────────── */
     footer {
@@ -675,6 +737,13 @@
         </div>
       </div>
 
+      <!-- Ranking Top 3 (solo para promotores con >4 ventas) -->
+      <div id="section-ranking">
+        <div class="divider"></div>
+        <p class="section-label">Top 3 Promotores</p>
+        <div class="ranking-list" id="ranking-list"></div>
+      </div>
+
     </div>
   </main>
 
@@ -734,8 +803,17 @@
 
         // n8n puede devolver array directo, objeto con .json, o {message: error}
         let promotor = null;
+        let rankingItems = null;
+
         if (Array.isArray(data) && data.length > 0) {
-          promotor = data[0].json ?? data[0];
+          const items = data.map(d => d.json ?? d);
+          if (items.length > 1) {
+            // Modo ranking: buscar al promotor logueado por Codigo
+            rankingItems = items;
+            promotor = items.find(d => d.Codigo === codigo) ?? items[0];
+          } else {
+            promotor = items[0];
+          }
         } else if (data && !Array.isArray(data) && data.Promotor) {
           promotor = data;
         }
@@ -745,7 +823,7 @@
           return;
         }
 
-        renderDashboard(promotor);
+        renderDashboard(promotor, rankingItems);
 
       } catch (err) {
         showError('Error de conexión. Comprueba tu red e inténtalo de nuevo.');
@@ -760,7 +838,7 @@
       loginError.classList.add('show');
     }
 
-    function renderDashboard(p) {
+    function renderDashboard(p, ranking) {
       // Topbar
       document.getElementById('dash-nombre').textContent = p.Promotor ?? '—';
       document.getElementById('dash-codigo').textContent = 'Código: ' + (p.Codigo ?? '—');
@@ -804,9 +882,37 @@
       setText('dash-a-pagar', p.A_pagar_al_promotor ?? '0,00 €');
       setText('dash-a-recibir', p.A_recibir ?? '0,00 €');
 
+      // Ranking
+      if (ranking && ranking.length > 1) {
+        renderRanking(ranking, p.Codigo);
+      } else {
+        document.getElementById('section-ranking').style.display = 'none';
+      }
+
       // Cambiar pantalla
       screenLogin.style.display = 'none';
       screenDash.style.display = 'flex';
+    }
+
+    function renderRanking(items, miCodigo) {
+      const medals = ['🥇', '🥈', '🥉'];
+      const classes = ['gold', 'silver', 'bronze'];
+      const list = document.getElementById('ranking-list');
+      list.innerHTML = items.slice(0, 3).map((p, i) => {
+        const esYo = p.Codigo === miCodigo;
+        return `<div class="ranking-item${esYo ? ' me' : ''}">
+          <div class="rank-medal ${classes[i]}">${medals[i]}</div>
+          <div class="rank-name">
+            ${p.Promotor ?? '—'}
+            ${esYo ? '<small>· TÚ</small>' : ''}
+          </div>
+          <div class="rank-stats">
+            <div class="rank-importe">${p.Importe_total ?? '0,00 €'}</div>
+            <div class="rank-entradas">${p.Total_entradas ?? 0} entradas</div>
+          </div>
+        </div>`;
+      }).join('');
+      document.getElementById('section-ranking').style.display = 'block';
     }
 
     function setCanal(id, activo) {
