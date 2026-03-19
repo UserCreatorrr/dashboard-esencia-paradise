@@ -692,15 +692,29 @@
           body: JSON.stringify({ Email: email, Codigo: codigo }),
         });
 
-        if (!res.ok) throw new Error('http_error');
+        const raw = await res.text();
 
-        const data = await res.json();
+        // Si no hay body o el status indica error de red
+        if (!raw || raw.trim() === '') {
+          showError('Credenciales incorrectas. Verifica tu email y código de promotor.');
+          return;
+        }
 
-        // n8n devuelve array de items; extraemos el primer json
-        const items = Array.isArray(data) ? data : [];
-        const promotor = items.length > 0 ? (items[0].json ?? items[0]) : null;
+        let data;
+        try { data = JSON.parse(raw); } catch {
+          showError('Credenciales incorrectas. Verifica tu email y código de promotor.');
+          return;
+        }
 
-        if (!promotor) {
+        // n8n puede devolver array directo, objeto con .json, o {message: error}
+        let promotor = null;
+        if (Array.isArray(data) && data.length > 0) {
+          promotor = data[0].json ?? data[0];
+        } else if (data && !Array.isArray(data) && data.Promotor) {
+          promotor = data;
+        }
+
+        if (!promotor || !promotor.Promotor) {
           showError('Credenciales incorrectas. Verifica tu email y código de promotor.');
           return;
         }
@@ -708,7 +722,7 @@
         renderDashboard(promotor);
 
       } catch (err) {
-        showError('Error de conexión. Inténtalo de nuevo.');
+        showError('Error de conexión. Comprueba tu red e inténtalo de nuevo.');
       } finally {
         btnAcceder.disabled = false;
         btnAcceder.innerHTML = 'Acceder';
