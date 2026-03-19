@@ -674,7 +674,7 @@
           <div class="stat-value" id="stat-reembolsadas">0</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Comisión generada</div>
+          <div class="stat-label">A cobrar</div>
           <div class="stat-value highlight" id="stat-comision">0,00 €</div>
         </div>
       </div>
@@ -853,7 +853,7 @@
       // Stats
       setText('stat-entradas', p.Total_entradas ?? 0);
       setText('stat-reembolsadas', p.Total_entradas_reembolsadas ?? 0);
-      setText('stat-comision', p.Comision_real ?? '0,00 €');
+      setText('stat-comision', p.A_pagar_al_promotor ?? '0,00 €');
 
       // Tabla desglose
       setText('t-ent-online', p.Entradas_online ?? 0);
