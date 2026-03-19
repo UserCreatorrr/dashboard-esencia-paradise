@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,32 +8,46 @@
   <link rel="icon" href="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <style>
     :root {
-      --gold:         #EAD8B1;
-      --gold-light:   #F3E5C5;
-      --bronze:       #C6A25F;
-      --bronze-dark:  #a8683f;
-      --crimson:      #7E1212;
-      --dark-0:       #050506;
-      --dark-1:       #0B0B0C;
-      --dark-2:       #111112;
-      --card-bg:      rgba(10, 10, 11, 0.90);
-      --border:       rgba(234, 216, 177, 0.18);
+      --gold: #EAD8B1;
+      --gold-light: #F3E5C5;
+      --bronze: #C6A25F;
+      --bronze-dark: #a8683f;
+      --crimson: #7E1212;
+      --dark-0: #050506;
+      --dark-1: #0B0B0C;
+      --dark-2: #111112;
+      --card-bg: rgba(10, 10, 11, 0.90);
+      --border: rgba(234, 216, 177, 0.18);
       --border-focus: rgba(198, 162, 95, 0.65);
-      --text-muted:   rgba(234, 216, 177, 0.50);
-      --radius-card:  22px;
+      --text-muted: rgba(234, 216, 177, 0.50);
+      --radius-card: 22px;
       --radius-input: 12px;
-      --radius-btn:   999px;
-      --tr:           0.25s ease;
+      --radius-btn: 999px;
+      --tr: 0.25s ease;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body { height: 100%; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
 
     body {
       background-color: var(--dark-0);
@@ -52,8 +67,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(198,162,95,.12) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(126,18,18,.08) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(198, 162, 95, .12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(126, 18, 18, .08) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
@@ -74,7 +89,7 @@
       width: 120px;
       height: 120px;
       object-fit: contain;
-      filter: drop-shadow(0 0 22px rgba(198,162,95,.5));
+      filter: drop-shadow(0 0 22px rgba(198, 162, 95, .5));
     }
 
     .eyebrow {
@@ -100,8 +115,13 @@
     }
 
     @keyframes shimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position:  200% center; }
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
     }
 
     /* ── MAIN ─────────────────────────────────────────── */
@@ -120,7 +140,9 @@
       padding-bottom: 6rem;
     }
 
-    main.wide { max-width: 860px; }
+    main.wide {
+      max-width: 860px;
+    }
 
     /* ── CARD ─────────────────────────────────────────── */
     .card {
@@ -128,7 +150,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-card);
       padding: clamp(1.6rem, 5vw, 2.4rem);
-      box-shadow: 0 28px 70px rgba(0,0,0,.85), 0 0 0 1px rgba(234,216,177,.04) inset;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .85), 0 0 0 1px rgba(234, 216, 177, .04) inset;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
@@ -145,6 +167,7 @@
       align-items: center;
       gap: 0.6rem;
     }
+
     .section-label::after {
       content: '';
       flex: 1;
@@ -152,10 +175,19 @@
       background: var(--border);
     }
 
-    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 1.6rem 0; }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 1.6rem 0;
+    }
 
     /* ── INPUTS ───────────────────────────────────────── */
-    .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
 
     label {
       font-size: 0.73rem;
@@ -165,11 +197,14 @@
       color: var(--text-muted);
       transition: color var(--tr);
     }
-    .field:focus-within label { color: var(--bronze); }
+
+    .field:focus-within label {
+      color: var(--bronze);
+    }
 
     input {
       width: 100%;
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, .04);
       border: 1px solid var(--border);
       border-radius: var(--radius-input);
       color: var(--gold);
@@ -180,11 +215,15 @@
       transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
       -webkit-appearance: none;
     }
-    input::placeholder { color: rgba(234,216,177,.22); }
+
+    input::placeholder {
+      color: rgba(234, 216, 177, .22);
+    }
+
     input:focus {
       border-color: var(--border-focus);
-      background: rgba(198,162,95,.05);
-      box-shadow: 0 0 0 3px rgba(198,162,95,.11);
+      background: rgba(198, 162, 95, .05);
+      box-shadow: 0 0 0 3px rgba(198, 162, 95, .11);
     }
 
     /* ── BUTTON ───────────────────────────────────────── */
@@ -204,29 +243,46 @@
       text-transform: uppercase;
       cursor: pointer;
       transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.15s ease;
-      box-shadow: 0 12px 32px rgba(0,0,0,.7), 0 0 0 1px rgba(234,216,177,.1) inset;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .7), 0 0 0 1px rgba(234, 216, 177, .1) inset;
       position: relative;
       overflow: hidden;
       margin-top: 0.5rem;
     }
+
     .btn-main::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .15), transparent);
       transform: translateX(-100%);
       transition: transform 0.5s ease;
     }
-    .btn-main:hover { background-position: 0% 0; transform: translateY(-1px); box-shadow: 0 16px 42px rgba(0,0,0,.8); }
-    .btn-main:hover::after { transform: translateX(100%); }
-    .btn-main:active { transform: translateY(0); }
-    .btn-main:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    .btn-main:hover {
+      background-position: 0% 0;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .8);
+    }
+
+    .btn-main:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-main:active {
+      transform: translateY(0);
+    }
+
+    .btn-main:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* ── ERROR MSG ────────────────────────────────────── */
     .error-msg {
       display: none;
-      background: rgba(126,18,18,.18);
-      border: 1px solid rgba(126,18,18,.45);
+      background: rgba(126, 18, 18, .18);
+      border: 1px solid rgba(126, 18, 18, .45);
       border-radius: 10px;
       color: #e87575;
       font-size: 0.82rem;
@@ -234,24 +290,38 @@
       margin-top: 1rem;
       text-align: center;
     }
-    .error-msg.show { display: block; }
+
+    .error-msg.show {
+      display: block;
+    }
 
     /* ── SPINNER ──────────────────────────────────────── */
     .spinner {
       display: inline-block;
-      width: 15px; height: 15px;
-      border: 2px solid rgba(5,5,6,.35);
+      width: 15px;
+      height: 15px;
+      border: 2px solid rgba(5, 5, 6, .35);
       border-top-color: var(--dark-0);
       border-radius: 50%;
       animation: spin 0.65s linear infinite;
       vertical-align: middle;
       margin-right: 7px;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* ── SCREENS ──────────────────────────────────────── */
-    #screen-login    { display: flex; }
-    #screen-dashboard { display: none; }
+    #screen-login {
+      display: flex;
+    }
+
+    #screen-dashboard {
+      display: none;
+    }
 
     /* ── DASHBOARD HEADER ─────────────────────────────── */
     .dash-topbar {
@@ -294,7 +364,12 @@
       transition: all var(--tr);
       white-space: nowrap;
     }
-    .btn-logout:hover { border-color: var(--border-focus); color: var(--gold); background: rgba(198,162,95,.07); }
+
+    .btn-logout:hover {
+      border-color: var(--border-focus);
+      color: var(--gold);
+      background: rgba(198, 162, 95, .07);
+    }
 
     /* ── ESTADO BADGE ─────────────────────────────────── */
     .estado-badge {
@@ -308,9 +383,24 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    .estado-badge.sin-enviar  { background: rgba(198,162,95,.1);  border: 1px solid rgba(198,162,95,.3);  color: var(--bronze); }
-    .estado-badge.pagado      { background: rgba(34,197,94,.1);   border: 1px solid rgba(34,197,94,.35);  color: #4ade80; }
-    .estado-badge.pendiente   { background: rgba(234,179,8,.1);   border: 1px solid rgba(234,179,8,.35);  color: #fbbf24; }
+
+    .estado-badge.sin-enviar {
+      background: rgba(198, 162, 95, .1);
+      border: 1px solid rgba(198, 162, 95, .3);
+      color: var(--bronze);
+    }
+
+    .estado-badge.pagado {
+      background: rgba(34, 197, 94, .1);
+      border: 1px solid rgba(34, 197, 94, .35);
+      color: #4ade80;
+    }
+
+    .estado-badge.pendiente {
+      background: rgba(234, 179, 8, .1);
+      border: 1px solid rgba(234, 179, 8, .35);
+      color: #fbbf24;
+    }
 
     /* ── STAT CARDS ───────────────────────────────────── */
     .stats-grid {
@@ -321,11 +411,13 @@
     }
 
     @media (min-width: 600px) {
-      .stats-grid { grid-template-columns: repeat(4, 1fr); }
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .stat-card {
-      background: rgba(255,255,255,.03);
+      background: rgba(255, 255, 255, .03);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1rem 1.1rem;
@@ -334,7 +426,10 @@
       gap: 0.35rem;
       transition: border-color var(--tr);
     }
-    .stat-card:hover { border-color: rgba(198,162,95,.35); }
+
+    .stat-card:hover {
+      border-color: rgba(198, 162, 95, .35);
+    }
 
     .stat-label {
       font-size: 0.65rem;
@@ -381,15 +476,19 @@
     }
 
     .breakdown th:not(:first-child),
-    .breakdown td:not(:first-child) { text-align: right; }
+    .breakdown td:not(:first-child) {
+      text-align: right;
+    }
 
     .breakdown td {
       padding: 0.6rem 0.75rem;
       color: var(--gold);
-      border-bottom: 1px solid rgba(234,216,177,.06);
+      border-bottom: 1px solid rgba(234, 216, 177, .06);
     }
 
-    .breakdown tr:last-child td { border-bottom: none; }
+    .breakdown tr:last-child td {
+      border-bottom: none;
+    }
 
     .breakdown .row-label {
       color: var(--text-muted);
@@ -415,9 +514,21 @@
       padding: 0.18rem 0.55rem;
       border-radius: 6px;
     }
-    .channel-badge.online  { background: rgba(34,197,94,.12);  color: #4ade80; }
-    .channel-badge.offline { background: rgba(198,162,95,.12); color: var(--bronze); }
-    .channel-badge.total   { background: rgba(234,216,177,.08); color: var(--gold); }
+
+    .channel-badge.online {
+      background: rgba(34, 197, 94, .12);
+      color: #4ade80;
+    }
+
+    .channel-badge.offline {
+      background: rgba(198, 162, 95, .12);
+      color: var(--bronze);
+    }
+
+    .channel-badge.total {
+      background: rgba(234, 216, 177, .08);
+      color: var(--gold);
+    }
 
     /* ── PAGO SECTION ─────────────────────────────────── */
     .pago-grid {
@@ -428,7 +539,7 @@
     }
 
     .pago-item {
-      background: rgba(255,255,255,.025);
+      background: rgba(255, 255, 255, .025);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 0.9rem 1rem;
@@ -451,8 +562,8 @@
     }
 
     .pago-item.destacado {
-      border-color: rgba(198,162,95,.35);
-      background: rgba(198,162,95,.06);
+      border-color: rgba(198, 162, 95, .35);
+      background: rgba(198, 162, 95, .06);
     }
 
     .pago-item.destacado .pago-item-value {
@@ -481,28 +592,60 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-    .canal-pill.on  { background: rgba(34,197,94,.12);  border: 1px solid rgba(34,197,94,.3);  color: #4ade80; }
-    .canal-pill.off { background: rgba(234,216,177,.05); border: 1px solid var(--border);       color: var(--text-muted); }
 
-    .canal-dot { width: 6px; height: 6px; border-radius: 50%; }
-    .canal-pill.on  .canal-dot { background: #4ade80; box-shadow: 0 0 5px #4ade8099; }
-    .canal-pill.off .canal-dot { background: var(--text-muted); }
+    .canal-pill.on {
+      background: rgba(34, 197, 94, .12);
+      border: 1px solid rgba(34, 197, 94, .3);
+      color: #4ade80;
+    }
+
+    .canal-pill.off {
+      background: rgba(234, 216, 177, .05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .canal-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .canal-pill.on .canal-dot {
+      background: #4ade80;
+      box-shadow: 0 0 5px #4ade8099;
+    }
+
+    .canal-pill.off .canal-dot {
+      background: var(--text-muted);
+    }
 
     /* ── FOOTER ───────────────────────────────────────── */
     footer {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       padding: 1.5rem 1rem 2rem;
       text-align: center;
       font-size: 0.7rem;
-      color: rgba(234,216,177,.18);
+      color: rgba(234, 216, 177, .18);
       letter-spacing: 0.08em;
     }
-    footer a { color: rgba(234,216,177,.35); text-decoration: none; }
+
+    footer a {
+      color: rgba(234, 216, 177, .35);
+      text-decoration: none;
+    }
 
     /* ── RESPONSIVE ───────────────────────────────────── */
     @media (max-width: 480px) {
-      .pago-grid { grid-template-columns: 1fr; }
-      .dash-topbar { flex-direction: column; align-items: flex-start; }
+      .pago-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dash-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -511,8 +654,8 @@
 
   <header>
     <div class="logo-wrap">
-      <img src="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png"
-           alt="Esencia Paradise" width="120" height="120" />
+      <img src="https://esenciaparadise.com/wp-content/uploads/2025/10/IMG_6016.png" alt="Esencia Paradise" width="120"
+        height="120" />
     </div>
     <p class="eyebrow">International Bachata Congress · Barcelona 2026</p>
     <h1>Portal de Promotores</h1>
@@ -658,12 +801,12 @@
   </footer>
 
   <script>
-    const WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook-test/40fcebd1-0668-43b0-a611-cb61023024a8';
+    const WEBHOOK = '/api/login';
 
-    const btnAcceder  = document.getElementById('btn-acceder');
-    const loginError  = document.getElementById('login-error');
+    const btnAcceder = document.getElementById('btn-acceder');
+    const loginError = document.getElementById('login-error');
     const screenLogin = document.getElementById('screen-login');
-    const screenDash  = document.getElementById('screen-dashboard');
+    const screenDash = document.getElementById('screen-dashboard');
 
     // Enter key en los inputs
     ['inp-email', 'inp-codigo'].forEach(id => {
@@ -673,7 +816,7 @@
     });
 
     async function handleLogin() {
-      const email  = document.getElementById('inp-email').value.trim();
+      const email = document.getElementById('inp-email').value.trim();
       const codigo = document.getElementById('inp-codigo').value.trim();
 
       if (!email || !codigo) {
@@ -740,47 +883,47 @@
       document.getElementById('dash-codigo').textContent = 'Código: ' + (p.Codigo ?? '—');
 
       // Estado badge
-      const estadoEl  = document.getElementById('dash-estado');
-      const estado    = (p.Estado ?? 'Sin enviar').toLowerCase();
+      const estadoEl = document.getElementById('dash-estado');
+      const estado = (p.Estado ?? 'Sin enviar').toLowerCase();
       estadoEl.textContent = p.Estado ?? 'Sin enviar';
-      estadoEl.className   = 'estado-badge';
-      if (estado.includes('pagado'))    estadoEl.classList.add('pagado');
+      estadoEl.className = 'estado-badge';
+      if (estado.includes('pagado')) estadoEl.classList.add('pagado');
       else if (estado.includes('pend')) estadoEl.classList.add('pendiente');
-      else                               estadoEl.classList.add('sin-enviar');
+      else estadoEl.classList.add('sin-enviar');
 
       // Canales
-      setCanal('canal-online',  p.Online_activado  === 1 || p.Online_activado  === true);
+      setCanal('canal-online', p.Online_activado === 1 || p.Online_activado === true);
       setCanal('canal-offline', p.Offline_activado === 1 || p.Offline_activado === true);
 
       // Stats
-      setText('stat-entradas',     p.Total_entradas ?? 0);
+      setText('stat-entradas', p.Total_entradas ?? 0);
       setText('stat-reembolsadas', p.Total_entradas_reembolsadas ?? 0);
-      setText('stat-importe',      p.Importe_total ?? '0,00 €');
-      setText('stat-comision',     p.Comision_real ?? '0,00 €');
+      setText('stat-importe', p.Importe_total ?? '0,00 €');
+      setText('stat-comision', p.Comision_real ?? '0,00 €');
 
       // Tabla desglose
-      setText('t-ent-online',  p.Entradas_online ?? 0);
-      setText('t-ref-online',  p.Entradas_reembolsados_online ?? 0);
-      setText('t-imp-online',  p.Importe_online ?? '0,00 €');
-      setText('t-com-online',  p.Comision_online ?? '0,00 €');
+      setText('t-ent-online', p.Entradas_online ?? 0);
+      setText('t-ref-online', p.Entradas_reembolsados_online ?? 0);
+      setText('t-imp-online', p.Importe_online ?? '0,00 €');
+      setText('t-com-online', p.Comision_online ?? '0,00 €');
 
       setText('t-ent-offline', p.Entradas_offline ?? 0);
       setText('t-ref-offline', p.Entradas_reembolsadas_offline ?? 0);
       setText('t-imp-offline', p.Importe_offline ?? '0,00 €');
       setText('t-com-offline', p.Comision_offline ?? '0,00 €');
 
-      setText('t-ent-total',   p.Total_entradas ?? 0);
-      setText('t-ref-total',   p.Total_entradas_reembolsadas ?? 0);
-      setText('t-imp-total',   p.Importe_total ?? '0,00 €');
-      setText('t-com-total',   p.Comision_real ?? '0,00 €');
+      setText('t-ent-total', p.Total_entradas ?? 0);
+      setText('t-ref-total', p.Total_entradas_reembolsadas ?? 0);
+      setText('t-imp-total', p.Importe_total ?? '0,00 €');
+      setText('t-com-total', p.Comision_real ?? '0,00 €');
 
       // Liquidación
-      setText('dash-a-pagar',   p.A_pagar_al_promotor ?? '0,00 €');
+      setText('dash-a-pagar', p.A_pagar_al_promotor ?? '0,00 €');
       setText('dash-a-recibir', p.A_recibir ?? '0,00 €');
 
       // Cambiar pantalla
       screenLogin.style.display = 'none';
-      screenDash.style.display  = 'flex';
+      screenDash.style.display = 'flex';
     }
 
     function setCanal(id, activo) {
@@ -793,12 +936,13 @@
     }
 
     function handleLogout() {
-      document.getElementById('inp-email').value  = '';
+      document.getElementById('inp-email').value = '';
       document.getElementById('inp-codigo').value = '';
       loginError.classList.remove('show');
-      screenDash.style.display  = 'none';
+      screenDash.style.display = 'none';
       screenLogin.style.display = 'flex';
     }
   </script>
 </body>
+
 </html>
