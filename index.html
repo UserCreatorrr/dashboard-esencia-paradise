@@ -674,10 +674,6 @@
           <div class="stat-value" id="stat-reembolsadas">0</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Importe total</div>
-          <div class="stat-value highlight" id="stat-importe">0,00 €</div>
-        </div>
-        <div class="stat-card">
           <div class="stat-label">Comisión generada</div>
           <div class="stat-value highlight" id="stat-comision">0,00 €</div>
         </div>
@@ -807,15 +803,10 @@
 
         if (Array.isArray(data) && data.length > 0) {
           const items = data.map(d => d.json ?? d);
+          // Merge garantiza: item[0] = promotor logueado, items[1..3] = top 3
+          promotor = items[0];
           if (items.length > 1) {
-            // Buscar al promotor logueado por Codigo (orden no garantizado)
-            promotor = items.find(d => d.Codigo === codigo);
-            // El resto son los top 3 del ranking
-            rankingItems = items.filter(d => d.Codigo !== codigo).slice(0, 3);
-            // Fallback por si el promotor no está en el array
-            if (!promotor) promotor = items[0];
-          } else {
-            promotor = items[0];
+            rankingItems = items.slice(1, 4);
           }
         } else if (data && !Array.isArray(data) && data.Promotor) {
           promotor = data;
@@ -862,7 +853,6 @@
       // Stats
       setText('stat-entradas', p.Total_entradas ?? 0);
       setText('stat-reembolsadas', p.Total_entradas_reembolsadas ?? 0);
-      setText('stat-importe', p.Importe_total ?? '0,00 €');
       setText('stat-comision', p.Comision_real ?? '0,00 €');
 
       // Tabla desglose
@@ -886,7 +876,7 @@
       setText('dash-a-recibir', p.A_recibir ?? '0,00 €');
 
       // Ranking
-      if (ranking && ranking.length > 1) {
+      if (ranking && ranking.length >= 1) {
         renderRanking(ranking, p.Codigo);
       } else {
         document.getElementById('section-ranking').style.display = 'none';
