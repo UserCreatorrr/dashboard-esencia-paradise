@@ -1,4 +1,4 @@
-const N8N_WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook-test/40fcebd1-0668-43b0-a611-cb61023024a8';
+const N8N_WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook/40fcebd1-0668-43b0-a611-cb61023024a8';
 
 module.exports = async function handler(req, res) {
     // CORS configuration
