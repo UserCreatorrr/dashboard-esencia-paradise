@@ -664,6 +664,33 @@
       background: rgba(180,100,20,.06);
     }
 
+    /* ── PDF DOWNLOAD BTN ─────────────────────────────── */
+    .btn-pdf-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      background: rgba(180,100,20,.12);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--tr);
+      white-space: nowrap;
+    }
+    .btn-pdf-dl:hover {
+      border-color: var(--border-focus);
+      background: rgba(107,10,10,.22);
+      color: var(--gold-bright);
+      box-shadow: 0 0 12px rgba(212,175,106,.12);
+    }
+
     /* ── FOOTER ───────────────────────────────────────── */
     footer {
       position: relative; z-index: 1;
@@ -835,7 +862,14 @@
 
   <!-- PDF Guide -->
   <div class="pdf-section" id="pdf-section">
-    <p class="pdf-label" id="lbl-pdf">Guía del Promotor</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;margin-bottom:0.9rem;">
+      <p class="pdf-label" id="lbl-pdf" style="margin-bottom:0;">Guía del Promotor</p>
+      <a id="btn-pdf-download" class="btn-pdf-dl"
+        href="https://drive.google.com/uc?export=download&id=1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl"
+        target="_blank" rel="noopener" download>
+        ⬇ Descargar PDF
+      </a>
+    </div>
     <p class="pdf-desc" id="lbl-pdf-desc">🎯 Tu herramienta secreta para vender más. Este manual tiene todo lo que necesitas saber sobre el evento — artistas, experiencia, propuesta de valor — para que cada conversación con un contacto se convierta en una venta. 🔥 Léelo, interiorízalo y úsalo. Los promotores que lo conocen venden más.</p>
     <iframe id="pdf-frame" class="pdf-frame"
       src="https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview"
@@ -992,6 +1026,7 @@
             ${esYo ? `<small>${t.tu}</small>` : ''}
           </div>
           <div class="rank-stats">
+            <div class="rank-importe">${p.Comision_real ?? '0,00 €'}</div>
             <div class="rank-entradas">${p.Total_entradas ?? 0} ${t.entradasUnit}</div>
           </div>
         </div>`;
@@ -1031,6 +1066,8 @@
         pdfLabel: 'Guía del Promotor',
         pdfDesc: '🎯 Tu herramienta secreta para vender más. Este manual tiene todo lo que necesitas saber sobre el evento — artistas, experiencia, propuesta de valor — para que cada conversación con un contacto se convierta en una venta. 🔥 Léelo, interiorízalo y úsalo. Los promotores que lo conocen venden más.',
         pdfSrc: 'https://drive.google.com/file/d/1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl/preview',
+        pdfDl: 'https://drive.google.com/uc?export=download&id=1LJJpYmNzmJ3BYcF0Z0QKIPfnx_Wm6WTl',
+        pdfDlBtn: '⬇ Descargar PDF',
       },
       en: {
         langBtn: 'ES',
@@ -1062,6 +1099,8 @@
         pdfLabel: 'Promoter Guide',
         pdfDesc: '🎯 Your secret weapon for selling more. This guide covers everything you need to know about the event — artists, experience, value proposition — so every conversation turns into a sale. 🔥 Read it, internalize it, use it. Promoters who know it sell more.',
         pdfSrc: 'https://drive.google.com/file/d/1qHoqBlqKnIC2qBlrRcjqicaOV8NNkHeN/preview',
+        pdfDl: 'https://drive.google.com/uc?export=download&id=1qHoqBlqKnIC2qBlrRcjqicaOV8NNkHeN',
+        pdfDlBtn: '⬇ Download PDF',
       }
     };
 
@@ -1095,6 +1134,9 @@
       document.getElementById('lbl-top3').textContent = t.top3;
       document.getElementById('lbl-pdf').textContent = t.pdfLabel;
       document.getElementById('lbl-pdf-desc').textContent = t.pdfDesc;
+      const dlBtn = document.getElementById('btn-pdf-download');
+      dlBtn.textContent = t.pdfDlBtn;
+      dlBtn.href = t.pdfDl;
       const frame = document.getElementById('pdf-frame');
       if (frame.src !== t.pdfSrc) frame.src = t.pdfSrc;
     }
