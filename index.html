@@ -1021,6 +1021,7 @@
     <div class="modal-card">
       <button class="modal-close" onclick="closeOfflineModal()" aria-label="Cerrar">✕</button>
       <div class="modal-title" id="modal-title">Registrar Venta Offline</div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin:-0.8rem 0 1.2rem;font-family:'Montserrat',sans-serif;" id="modal-subtitle">Registra los datos del comprador</p>
       <div class="modal-grid">
         <div class="modal-field modal-field-full">
           <label id="modal-lbl-nombre">Nombre y Apellido</label>
@@ -1269,6 +1270,7 @@
         pdfDlBtn: '⬇ Descargar PDF',
         btnOffline: '+ Registrar venta',
         modalTitle: 'Registrar Venta Offline',
+        modalSubtitle: 'Registra los datos del comprador',
         modalNombre: 'Nombre y Apellido',
         modalTelefono: 'Número de teléfono',
         modalEmail: 'Email',
@@ -1312,6 +1314,7 @@
         pdfDlBtn: '⬇ Download PDF',
         btnOffline: '+ Register sale',
         modalTitle: 'Register Offline Sale',
+        modalSubtitle: "Register the buyer's details",
         modalNombre: 'Name and Surname',
         modalTelefono: 'Phone number',
         modalEmail: 'Email',
@@ -1360,6 +1363,7 @@
       if (frame.src !== t.pdfSrc) frame.src = t.pdfSrc;
 
       document.getElementById('btn-offline').textContent         = t.btnOffline;
+      document.getElementById('modal-subtitle').textContent      = t.modalSubtitle;
       document.getElementById('modal-title').textContent         = t.modalTitle;
       document.getElementById('modal-lbl-nombre').textContent    = t.modalNombre;
       document.getElementById('modal-lbl-telefono').textContent  = t.modalTelefono;
