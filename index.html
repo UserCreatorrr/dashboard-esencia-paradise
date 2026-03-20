@@ -1023,43 +1023,47 @@
       <div class="modal-title" id="modal-title">Registrar Venta Offline</div>
       <div class="modal-grid">
         <div class="modal-field modal-field-full">
-          <label id="modal-lbl-comprador">Nombre del comprador</label>
-          <input type="text" id="m-comprador" placeholder="Nombre y apellidos" />
+          <label id="modal-lbl-nombre">Nombre y Apellido</label>
+          <input type="text" id="m-nombre" placeholder="Nombre y apellidos" />
         </div>
         <div class="modal-field">
-          <label id="modal-lbl-tipo">Tipo de entrada</label>
+          <label id="modal-lbl-telefono">Número de teléfono</label>
+          <input type="tel" id="m-telefono" placeholder="+34 600 000 000" />
+        </div>
+        <div class="modal-field">
+          <label id="modal-lbl-email">Email</label>
+          <input type="email" id="m-email" placeholder="comprador@email.com" />
+        </div>
+        <div class="modal-field">
+          <label id="modal-lbl-pais">País</label>
+          <input type="text" id="m-pais" placeholder="España" />
+        </div>
+        <div class="modal-field">
+          <label id="modal-lbl-ciudad">Ciudad</label>
+          <input type="text" id="m-ciudad" placeholder="Barcelona" />
+        </div>
+        <div class="modal-field">
+          <label id="modal-lbl-tipo">Tipo de ticket</label>
           <select id="m-tipo">
             <option value="" id="modal-opt-select">— Seleccionar —</option>
-            <option value="General">General</option>
-            <option value="VIP">VIP</option>
-            <option value="Early Bird">Early Bird</option>
+            <option value="Full Pass (4th Release)">Full Pass (4th Release)</option>
+            <option value="Full Pass (3rd Release)">Full Pass (3rd Release)</option>
+            <option value="Full Pass (2nd Release)">Full Pass (2nd Release)</option>
+            <option value="Full Pass (1st Release)">Full Pass (1st Release)</option>
+            <option value="VIP PASS">VIP PASS</option>
+            <option value="VIP PASS (First 10)">VIP PASS (First 10)</option>
+            <option value="2 FULL PASS (Pack 2x99€)">2 FULL PASS (Pack 2x99€)</option>
+            <option value="FULL PASS + J&J PRO LEADER">FULL PASS + J&amp;J PRO LEADER</option>
+            <option value="FULL PASS + J&J PRO FOLLOWER">FULL PASS + J&amp;J PRO FOLLOWER</option>
+            <option value="Leader Amateur - Jack&Jill">Leader Amateur - Jack&amp;Jill</option>
+            <option value="Follower Amateur - Jack&Jill">Follower Amateur - Jack&amp;Jill</option>
+            <option value="Leader Pro - Jack&Jill">Leader Pro - Jack&amp;Jill</option>
+            <option value="Follower Pro - Jack&Jill">Follower Pro - Jack&amp;Jill</option>
           </select>
         </div>
         <div class="modal-field">
-          <label id="modal-lbl-cantidad">Cantidad</label>
-          <input type="number" id="m-cantidad" min="1" placeholder="1" />
-        </div>
-        <div class="modal-field">
-          <label id="modal-lbl-importe">Importe cobrado (€)</label>
+          <label id="modal-lbl-importe">Importe del ticket (€)</label>
           <input type="number" id="m-importe" min="0" step="0.01" placeholder="0.00" />
-        </div>
-        <div class="modal-field">
-          <label id="modal-lbl-metodo">Método de pago</label>
-          <select id="m-metodo">
-            <option value="" id="modal-opt-select2">— Seleccionar —</option>
-            <option value="Efectivo" id="modal-opt-efectivo">Efectivo</option>
-            <option value="Bizum">Bizum</option>
-            <option value="Transferencia" id="modal-opt-transferencia">Transferencia</option>
-            <option value="Otro" id="modal-opt-otro">Otro</option>
-          </select>
-        </div>
-        <div class="modal-field">
-          <label id="modal-lbl-fecha">Fecha de venta</label>
-          <input type="date" id="m-fecha" />
-        </div>
-        <div class="modal-field modal-field-full">
-          <label id="modal-lbl-notas">Notas (opcional)</label>
-          <textarea id="m-notas" placeholder="..."></textarea>
         </div>
       </div>
       <div class="modal-feedback" id="modal-feedback"></div>
@@ -1265,18 +1269,15 @@
         pdfDlBtn: '⬇ Descargar PDF',
         btnOffline: '+ Registrar venta',
         modalTitle: 'Registrar Venta Offline',
-        modalComprador: 'Nombre del comprador',
-        modalTipo: 'Tipo de entrada',
-        modalCantidad: 'Cantidad',
-        modalImporte: 'Importe cobrado (€)',
-        modalMetodo: 'Método de pago',
-        modalFecha: 'Fecha de venta',
-        modalNotas: 'Notas (opcional)',
+        modalNombre: 'Nombre y Apellido',
+        modalTelefono: 'Número de teléfono',
+        modalEmail: 'Email',
+        modalPais: 'País',
+        modalCiudad: 'Ciudad',
+        modalTipo: 'Tipo de ticket',
+        modalImporte: 'Importe del ticket (€)',
         modalSubmit: 'Registrar',
         modalSelectPlaceholder: '— Seleccionar —',
-        modalOptEfectivo: 'Efectivo',
-        modalOptTransferencia: 'Transferencia',
-        modalOptOtro: 'Otro',
       },
       en: {
         langBtn: 'ES',
@@ -1311,18 +1312,15 @@
         pdfDlBtn: '⬇ Download PDF',
         btnOffline: '+ Register sale',
         modalTitle: 'Register Offline Sale',
-        modalComprador: "Buyer's name",
+        modalNombre: 'Name and Surname',
+        modalTelefono: 'Phone number',
+        modalEmail: 'Email',
+        modalPais: 'Country',
+        modalCiudad: 'City',
         modalTipo: 'Ticket type',
-        modalCantidad: 'Quantity',
-        modalImporte: 'Amount charged (€)',
-        modalMetodo: 'Payment method',
-        modalFecha: 'Sale date',
-        modalNotas: 'Notes (optional)',
+        modalImporte: 'Ticket amount (€)',
         modalSubmit: 'Submit',
         modalSelectPlaceholder: '— Select —',
-        modalOptEfectivo: 'Cash',
-        modalOptTransferencia: 'Transfer',
-        modalOptOtro: 'Other',
       }
     };
 
@@ -1361,21 +1359,17 @@
       const frame = document.getElementById('pdf-frame');
       if (frame.src !== t.pdfSrc) frame.src = t.pdfSrc;
 
-      document.getElementById('btn-offline').textContent              = t.btnOffline;
-      document.getElementById('modal-title').textContent              = t.modalTitle;
-      document.getElementById('modal-lbl-comprador').textContent      = t.modalComprador;
-      document.getElementById('modal-lbl-tipo').textContent           = t.modalTipo;
-      document.getElementById('modal-lbl-cantidad').textContent       = t.modalCantidad;
-      document.getElementById('modal-lbl-importe').textContent        = t.modalImporte;
-      document.getElementById('modal-lbl-metodo').textContent         = t.modalMetodo;
-      document.getElementById('modal-lbl-fecha').textContent          = t.modalFecha;
-      document.getElementById('modal-lbl-notas').textContent          = t.modalNotas;
-      document.getElementById('modal-btn-submit').textContent         = t.modalSubmit;
-      document.getElementById('modal-opt-select').textContent         = t.modalSelectPlaceholder;
-      document.getElementById('modal-opt-select2').textContent        = t.modalSelectPlaceholder;
-      document.getElementById('modal-opt-efectivo').textContent       = t.modalOptEfectivo;
-      document.getElementById('modal-opt-transferencia').textContent  = t.modalOptTransferencia;
-      document.getElementById('modal-opt-otro').textContent           = t.modalOptOtro;
+      document.getElementById('btn-offline').textContent         = t.btnOffline;
+      document.getElementById('modal-title').textContent         = t.modalTitle;
+      document.getElementById('modal-lbl-nombre').textContent    = t.modalNombre;
+      document.getElementById('modal-lbl-telefono').textContent  = t.modalTelefono;
+      document.getElementById('modal-lbl-email').textContent     = t.modalEmail;
+      document.getElementById('modal-lbl-pais').textContent      = t.modalPais;
+      document.getElementById('modal-lbl-ciudad').textContent    = t.modalCiudad;
+      document.getElementById('modal-lbl-tipo').textContent      = t.modalTipo;
+      document.getElementById('modal-lbl-importe').textContent   = t.modalImporte;
+      document.getElementById('modal-btn-submit').textContent    = t.modalSubmit;
+      document.getElementById('modal-opt-select').textContent    = t.modalSelectPlaceholder;
     }
 
     function toggleLang() {
@@ -1394,8 +1388,6 @@
 
     // ── OFFLINE MODAL ──────────────────────────────────
     function openOfflineModal() {
-      const fechaInput = document.getElementById('m-fecha');
-      if (!fechaInput.value) fechaInput.value = new Date().toISOString().split('T')[0];
       document.getElementById('modal-feedback').className = 'modal-feedback';
       document.getElementById('modal-offline').classList.add('open');
     }
@@ -1405,15 +1397,15 @@
     }
 
     async function submitOfflineSale() {
-      const comprador = document.getElementById('m-comprador').value.trim();
-      const tipo      = document.getElementById('m-tipo').value;
-      const cantidad  = document.getElementById('m-cantidad').value;
-      const importe   = document.getElementById('m-importe').value;
-      const metodo    = document.getElementById('m-metodo').value;
-      const fecha     = document.getElementById('m-fecha').value;
-      const notas     = document.getElementById('m-notas').value.trim();
+      const nombre   = document.getElementById('m-nombre').value.trim();
+      const telefono = document.getElementById('m-telefono').value.trim();
+      const email    = document.getElementById('m-email').value.trim();
+      const pais     = document.getElementById('m-pais').value.trim();
+      const ciudad   = document.getElementById('m-ciudad').value.trim();
+      const tipo     = document.getElementById('m-tipo').value;
+      const importe  = document.getElementById('m-importe').value;
 
-      if (!comprador || !tipo || !cantidad || !importe || !metodo || !fecha) {
+      if (!nombre || !telefono || !email || !pais || !ciudad || !tipo || !importe) {
         showModalFeedback('error', currentLang === 'es'
           ? 'Por favor completa todos los campos obligatorios.'
           : 'Please fill in all required fields.');
@@ -1421,7 +1413,6 @@
       }
 
       const btnSubmit = document.getElementById('modal-btn-submit');
-      const t = LANG[currentLang];
       btnSubmit.disabled = true;
       btnSubmit.innerHTML = '<span class="spinner"></span>';
 
@@ -1429,13 +1420,13 @@
         const body = {
           Codigo:           currentPromotor?.Codigo   ?? '',
           Promotor:         currentPromotor?.Promotor ?? '',
-          Nombre_comprador: comprador,
+          Nombre_comprador: nombre,
+          Telefono:         telefono,
+          Email_comprador:  email,
+          Pais:             pais,
+          Ciudad:           ciudad,
           Tipo_entrada:     tipo,
-          Cantidad:         cantidad,
           Importe_cobrado:  importe,
-          Metodo_pago:      metodo,
-          Fecha_venta:      fecha,
-          Notas:            notas,
         };
 
         const res = await fetch(OFFLINE_WEBHOOK, {
@@ -1448,9 +1439,8 @@
           showModalFeedback('success', currentLang === 'es'
             ? '✓ Venta registrada correctamente.'
             : '✓ Sale registered successfully.');
-          ['m-comprador','m-cantidad','m-importe','m-notas'].forEach(id => document.getElementById(id).value = '');
+          ['m-nombre','m-telefono','m-email','m-pais','m-ciudad','m-importe'].forEach(id => document.getElementById(id).value = '');
           document.getElementById('m-tipo').value = '';
-          document.getElementById('m-metodo').value = '';
         } else {
           showModalFeedback('error', currentLang === 'es'
             ? 'Error al registrar la venta. Inténtalo de nuevo.'
