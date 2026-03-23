@@ -1076,6 +1076,7 @@
     const WEBHOOK = '/api/login';
     const OFFLINE_WEBHOOK = '/api/offline-sale';
     let currentPromotor = null;
+    let pendingRefresh = false;
 
     const btnAcceder = document.getElementById('btn-acceder');
     const loginError = document.getElementById('login-error');
@@ -1389,8 +1390,27 @@
       document.getElementById('modal-offline').classList.add('open');
     }
 
-    function closeOfflineModal() {
+    async function closeOfflineModal() {
       document.getElementById('modal-offline').classList.remove('open');
+      if (!pendingRefresh || !currentPromotor) return;
+      pendingRefresh = false;
+      try {
+        const res = await fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ Email: currentPromotor.Email, Codigo: currentPromotor.Codigo }),
+        });
+        const data = await res.json();
+        const items = Array.isArray(data) ? data.map(d => d.json ?? d) : [];
+        const updated = items.find(p =>
+          p.Email?.toLowerCase().trim() === currentPromotor.Email.toLowerCase().trim() &&
+          p.Codigo?.toLowerCase().trim() === currentPromotor.Codigo.toLowerCase().trim()
+        );
+        if (updated) {
+          const rankingItems = items.filter(p => p.Codigo !== updated.Codigo).slice(0, 3);
+          renderDashboard(updated, rankingItems);
+        }
+      } catch {}
     }
 
     async function submitOfflineSale() {
@@ -1433,6 +1453,7 @@
           showModalFeedback('success', currentLang === 'es'
             ? '✓ Venta registrada correctamente.'
             : '✓ Sale registered successfully.');
+          pendingRefresh = true;
           ['m-nombre','m-telefono','m-email','m-importe'].forEach(id => document.getElementById(id).value = '');
           document.getElementById('m-tipo').value = '';
         } else {
