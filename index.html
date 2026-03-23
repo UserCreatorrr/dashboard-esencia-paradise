@@ -1035,14 +1035,7 @@
           <label id="modal-lbl-email">Email</label>
           <input type="email" id="m-email" placeholder="comprador@email.com" />
         </div>
-        <div class="modal-field">
-          <label id="modal-lbl-pais">País</label>
-          <input type="text" id="m-pais" placeholder="España" />
-        </div>
-        <div class="modal-field">
-          <label id="modal-lbl-ciudad">Ciudad</label>
-          <input type="text" id="m-ciudad" placeholder="Barcelona" />
-        </div>
+
         <div class="modal-field">
           <label id="modal-lbl-tipo">Tipo de ticket</label>
           <select id="m-tipo">
@@ -1274,8 +1267,6 @@
         modalNombre: 'Nombre y Apellido',
         modalTelefono: 'Número de teléfono',
         modalEmail: 'Email',
-        modalPais: 'País',
-        modalCiudad: 'Ciudad',
         modalTipo: 'Tipo de ticket',
         modalImporte: 'Importe del ticket (€)',
         modalSubmit: 'Registrar',
@@ -1318,8 +1309,6 @@
         modalNombre: 'Name and Surname',
         modalTelefono: 'Phone number',
         modalEmail: 'Email',
-        modalPais: 'Country',
-        modalCiudad: 'City',
         modalTipo: 'Ticket type',
         modalImporte: 'Ticket amount (€)',
         modalSubmit: 'Submit',
@@ -1404,12 +1393,10 @@
       const nombre   = document.getElementById('m-nombre').value.trim();
       const telefono = document.getElementById('m-telefono').value.trim();
       const email    = document.getElementById('m-email').value.trim();
-      const pais     = document.getElementById('m-pais').value.trim();
-      const ciudad   = document.getElementById('m-ciudad').value.trim();
       const tipo     = document.getElementById('m-tipo').value;
       const importe  = document.getElementById('m-importe').value;
 
-      if (!nombre || !telefono || !email || !pais || !ciudad || !tipo || !importe) {
+      if (!nombre || !telefono || !email || !tipo || !importe) {
         showModalFeedback('error', currentLang === 'es'
           ? 'Por favor completa todos los campos obligatorios.'
           : 'Please fill in all required fields.');
@@ -1427,8 +1414,6 @@
           Nombre_comprador: nombre,
           Telefono:         telefono,
           Email_comprador:  email,
-          Pais:             pais,
-          Ciudad:           ciudad,
           Tipo_entrada:     tipo,
           Importe_cobrado:  importe,
         };
@@ -1443,7 +1428,7 @@
           showModalFeedback('success', currentLang === 'es'
             ? '✓ Venta registrada correctamente.'
             : '✓ Sale registered successfully.');
-          ['m-nombre','m-telefono','m-email','m-pais','m-ciudad','m-importe'].forEach(id => document.getElementById(id).value = '');
+          ['m-nombre','m-telefono','m-email','m-importe'].forEach(id => document.getElementById(id).value = '');
           document.getElementById('m-tipo').value = '';
         } else {
           showModalFeedback('error', currentLang === 'es'
