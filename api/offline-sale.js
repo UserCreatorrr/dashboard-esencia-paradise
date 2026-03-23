@@ -1,4 +1,4 @@
-const N8N_WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook/a0b1ee9c-2f74-49bf-b203-3df04ab3aeda';
+const N8N_WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook-test/a0b1ee9c-2f74-49bf-b203-3df04ab3aeda';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
