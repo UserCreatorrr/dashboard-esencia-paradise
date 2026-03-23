@@ -1,4 +1,4 @@
-const N8N_WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook-test/40fcebd1-0668-43b0-a611-cb61023024a8';
+const N8N_WEBHOOK = 'https://esencia-paradise-n8n.rh6pum.easypanel.host/webhook/40fcebd1-0668-43b0-a611-cb61023024a8';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -8,8 +8,11 @@ module.exports = async function handler(req, res) {
 
   try {
     const { Email, Codigo } = req.body;
-    const params = new URLSearchParams({ Email, Codigo });
-    const response = await fetch(`${N8N_WEBHOOK}?${params}`);
+    const response = await fetch(N8N_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ Email, Codigo }),
+    });
     const text = await response.text();
     if (!text || text.trim() === '') return res.status(404).json([]);
     try {
