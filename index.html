@@ -1175,8 +1175,10 @@
       setCanal('canal-offline', p.Offline_activado === 1 || p.Offline_activado === true);
 
       // Stats
-      setText('stat-entradas', p.Total_entradas ?? 0);
-      setText('stat-reembolsadas', p.Total_entradas_reembolsadas ?? 0);
+      const totalEntradas = (Number(p.Entradas_online) || 0) + (Number(p.Entradas_offline) || 0);
+      const totalReembolsadas = (Number(p.Entradas_reembolsados_online) || 0) + (Number(p.Entradas_reembolsadas_offline) || 0);
+      setText('stat-entradas', totalEntradas);
+      setText('stat-reembolsadas', totalReembolsadas);
       setText('stat-comision', p.A_pagar_al_promotor ?? '0,00 €');
 
       // Tabla desglose
@@ -1190,8 +1192,8 @@
       setText('t-imp-offline', p.Importe_offline ?? '0,00 €');
       setText('t-com-offline', p.Comision_offline ?? '0,00 €');
 
-      setText('t-ent-total', p.Total_entradas ?? 0);
-      setText('t-ref-total', p.Total_entradas_reembolsadas ?? 0);
+      setText('t-ent-total', totalEntradas);
+      setText('t-ref-total', totalReembolsadas);
       setText('t-imp-total', p.Importe_total ?? '0,00 €');
       setText('t-com-total', p.Comision_real ?? '0,00 €');
 
