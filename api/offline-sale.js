@@ -7,12 +7,11 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   try {
-    const data = req.body;
-    const response = await fetch(N8N_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    let data = req.body;
+    if (typeof data === 'string') { try { data = JSON.parse(data); } catch {} }
+    const params = new URLSearchParams();
+    for (const [key, value] of Object.entries(data || {})) params.append(key, String(value));
+    const response = await fetch(`${N8N_WEBHOOK}?${params}`);
     const text = await response.text();
     if (!text || text.trim() === '') return res.status(200).json({ ok: true });
     try {
